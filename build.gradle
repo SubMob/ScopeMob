@@ -9,9 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode appVersionCode
-        versionName "1.${appVersionCode}"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        versionCode gitVersion
+        versionName "1.${gitVersion}"
     }
 
     buildTypes {
@@ -23,6 +22,6 @@ android {
 }
 
 dependencies {
-    implementation Kotlin
-    testImplementation JUnit
+    implementation kotlin
+    testImplementation jUnit
 }
