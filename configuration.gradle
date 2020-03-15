@@ -32,5 +32,8 @@ ext {
     jUnit = "junit:junit:$JUNIT_VERSION"
 
     // Classpath
-    androidBuildTools = "com.android.tools.build:gradle:${ANDROID_PLUGIN_VERSION}"
+    classpaths = [
+            androidBuildTools : "com.android.tools.build:gradle:${ANDROID_PLUGIN_VERSION}",
+            kotlinGradlePlugin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${KOTLIN_VERSION}",
+    ]
 }
