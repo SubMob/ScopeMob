@@ -1,10 +1,10 @@
-package com.github.mustafaozhan.scopemob.lambda
+package com.github.mustafaozhan.scopemob
 
-import com.github.mustafaozhan.scopemob.MainFunctionTest
+import com.github.mustafaozhan.scopemob.base.BaseCopeTest
 import org.junit.Assert
 import org.junit.Test
 
-class OptionalLambdaTest : MainFunctionTest() {
+class OptionalLambdaTest : BaseCopeTest() {
 
     private var nullString: String? = null
     private var notNullString: String? = SOME_STRING
@@ -17,7 +17,7 @@ class OptionalLambdaTest : MainFunctionTest() {
         ) {
             Assert.assertTrue(EXPECTED, true)
         } ?: run {
-            Assert.fail(Companion.UN_EXPECTED)
+            Assert.fail(UN_EXPECTED)
         }
 
         ensure(
@@ -27,7 +27,7 @@ class OptionalLambdaTest : MainFunctionTest() {
         ) {
             Assert.fail(UN_EXPECTED)
         } ?: run {
-            Assert.assertTrue(Companion.EXPECTED, true)
+            Assert.assertTrue(EXPECTED, true)
         }
     }
 

@@ -1,2 +1,2 @@
-include ':scopemob'
+include ':submob'
 rootProject.name = "scopemob"

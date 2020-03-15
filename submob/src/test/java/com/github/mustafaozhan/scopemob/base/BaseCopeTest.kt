@@ -1,8 +1,8 @@
-package com.github.mustafaozhan.scopemob
+package com.github.mustafaozhan.scopemob.base
 
 import com.github.mustafaozhan.scopemob.model.FunctionTestSubject
 
-open class MainFunctionTest {
+abstract class BaseCopeTest {
 
     companion object {
         const val UN_EXPECTED = "Unexpected"

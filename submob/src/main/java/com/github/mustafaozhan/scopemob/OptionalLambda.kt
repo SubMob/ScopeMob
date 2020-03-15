@@ -1,4 +1,4 @@
-package com.github.mustafaozhan.scopemob.lambda
+package com.github.mustafaozhan.scopemob
 
 inline fun <reified T, R> ensure(
     vararg elements: T?,

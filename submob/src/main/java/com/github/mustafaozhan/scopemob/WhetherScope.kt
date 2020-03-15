@@ -1,4 +1,4 @@
-package com.github.mustafaozhan.scopemob.scope
+package com.github.mustafaozhan.scopemob
 
 inline fun <reified T> T.whether(
     method: T.(condition: T) -> Boolean

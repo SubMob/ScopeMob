@@ -1,11 +1,11 @@
-package com.github.mustafaozhan.scopemob.scope
+package com.github.mustafaozhan.scopemob
 
-import com.github.mustafaozhan.scopemob.MainFunctionTest
+import com.github.mustafaozhan.scopemob.base.BaseCopeTest
 import org.junit.Assert
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-open class MainScopeTest : MainFunctionTest() {
+open class MainScopeTest : BaseCopeTest() {
 
     @Test
     fun `is chain breaks`() {
@@ -15,16 +15,16 @@ open class MainScopeTest : MainFunctionTest() {
             ?.whetherNot { falseCondition }
             ?.whetherNot { it.trueCondition } // exit chain
             ?.whether { true }
-            ?.let { Assert.fail(Companion.UN_EXPECTED) }
-            ?: run { assertTrue(Companion.EXPECTED, true) }
+            ?.let { Assert.fail(UN_EXPECTED) }
+            ?: run { assertTrue(EXPECTED, true) }
 
         subjectFunction
             ?.whether { it.trueCondition }
             ?.whetherNot { falseCondition }
             ?.either({ it.falseCondition }, { falseCondition }) // exit chain
             ?.whether { true }
-            ?.let { Assert.fail(Companion.UN_EXPECTED) }
-            ?: run { assertTrue(Companion.EXPECTED, true) }
+            ?.let { Assert.fail(UN_EXPECTED) }
+            ?: run { assertTrue(EXPECTED, true) }
     }
 
     @Test
@@ -38,9 +38,9 @@ open class MainScopeTest : MainFunctionTest() {
             .whether { true }
             .let {
                 if (it == null) {
-                    assertTrue(Companion.EXPECTED, true)
+                    assertTrue(EXPECTED, true)
                 } else {
-                    Assert.fail(Companion.UN_EXPECTED)
+                    Assert.fail(UN_EXPECTED)
                 }
             }
         subjectFunction = null
@@ -50,6 +50,6 @@ open class MainScopeTest : MainFunctionTest() {
             ?.whetherNot { falseCondition }
             ?.mapTo { it }
             .whether { true }
-            ?.let { Assert.fail(Companion.UN_EXPECTED) }
+            ?.let { Assert.fail(UN_EXPECTED) }
     }
 }
