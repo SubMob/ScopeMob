@@ -33,7 +33,7 @@ class OptionalLambdaTest : BaseCopeTest() {
 
     @Test
     fun inCase() {
-        nullString.inCase {
+        nullString.justInCase {
             nullString = SOME_STRING
         }.apply {
             Assert.assertNotNull(nullString)
@@ -42,7 +42,7 @@ class OptionalLambdaTest : BaseCopeTest() {
 
         resetString()
 
-        nullString.inCase {
+        nullString.justInCase {
             nullString = SOME_STRING
         }.let {
             Assert.assertNotNull(nullString)
@@ -51,7 +51,7 @@ class OptionalLambdaTest : BaseCopeTest() {
 
         resetString()
 
-        nullString.inCase {
+        nullString.justInCase {
             // not initialized
         }.apply {
             Assert.assertNull(nullString)
@@ -59,7 +59,7 @@ class OptionalLambdaTest : BaseCopeTest() {
 
         resetString()
 
-        notNullString.inCase {
+        notNullString.justInCase {
             Assert.fail(UN_EXPECTED)
         }.let {
             Assert.assertEquals(SOME_STRING, notNullString)
