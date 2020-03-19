@@ -1,4 +1,4 @@
-package com.github.mustafaozhan.scopemob
+package mustafaozhan.github.com.scopemob
 
 inline fun <reified T, reified R> T.mapTo(
     transform: T.(map: T) -> R?

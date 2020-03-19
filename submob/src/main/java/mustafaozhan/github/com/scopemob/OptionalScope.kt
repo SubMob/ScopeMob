@@ -1,4 +1,4 @@
-package com.github.mustafaozhan.scopemob
+package mustafaozhan.github.com.scopemob
 
 inline fun <reified T, R> ensure(
     vararg elements: T?,

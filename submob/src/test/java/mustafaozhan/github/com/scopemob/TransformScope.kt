@@ -1,6 +1,6 @@
-package com.github.mustafaozhan.scopemob
+package mustafaozhan.github.com.scopemob
 
-import com.github.mustafaozhan.scopemob.main.MainScopeTest
+import mustafaozhan.github.com.scopemob.main.MainScopeTest
 import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
