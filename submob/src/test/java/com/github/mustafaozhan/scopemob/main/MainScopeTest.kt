@@ -1,11 +1,26 @@
-package com.github.mustafaozhan.scopemob
+package com.github.mustafaozhan.scopemob.main
 
-import com.github.mustafaozhan.scopemob.base.BaseCopeTest
+import com.github.mustafaozhan.scopemob.either
+import com.github.mustafaozhan.scopemob.inCase
+import com.github.mustafaozhan.scopemob.inCaseNot
+import com.github.mustafaozhan.scopemob.mapTo
+import com.github.mustafaozhan.scopemob.model.FunctionTestSubject
+import com.github.mustafaozhan.scopemob.whether
+import com.github.mustafaozhan.scopemob.whetherNot
 import org.junit.Assert
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-open class MainScopeTest : BaseCopeTest() {
+open class MainScopeTest {
+    companion object {
+        const val UN_EXPECTED = "Unexpected"
+        const val EXPECTED = "Expected"
+
+        @Suppress("MaybeConst")
+        val SOME_STRING: String? = "Some String"
+    }
+
+    protected var subjectFunction: FunctionTestSubject? = FunctionTestSubject()
 
     @Test
     fun `is chain breaks`() {

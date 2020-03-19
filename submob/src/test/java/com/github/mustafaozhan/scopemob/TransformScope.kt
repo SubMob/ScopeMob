@@ -1,11 +1,16 @@
 package com.github.mustafaozhan.scopemob
 
+import com.github.mustafaozhan.scopemob.main.MainScopeTest
 import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class MapScopeTest : MainScopeTest() {
+class TransformScope : MainScopeTest() {
+
+    open class A
+    open class B : A()
+    class C : B()
 
     @Test
     fun mapTo() {
@@ -44,4 +49,33 @@ class MapScopeTest : MainScopeTest() {
             ?.mapTo { !it }
             ?.let { Assert.fail(UN_EXPECTED) }
         ?: run { assertTrue(EXPECTED, true) }
+
+    @Test
+    fun castTo() {
+        B().castTo<A>()
+            ?.let { assertTrue(EXPECTED, true) }
+            ?: run { Assert.fail(UN_EXPECTED) }
+
+        A().castTo<B>()
+            ?.let { Assert.fail(UN_EXPECTED) }
+            ?: run { assertTrue(EXPECTED, true) }
+    }
+
+    @Test
+    fun `multi castTo`() {
+        C().castTo<B>()
+            ?.castTo<A>()
+            ?.let { assertTrue(EXPECTED, true) }
+            ?: run { Assert.fail(UN_EXPECTED) }
+
+        A().castTo<B>()
+            ?.castTo<C>()
+            ?.let { Assert.fail(UN_EXPECTED) }
+            ?: run { assertTrue(EXPECTED, true) }
+    }
+
+    @Test
+    fun `extraordinary castTo`() = C().castTo<A>()
+        ?.let { assertTrue(EXPECTED, true) }
+        ?: run { Assert.fail(UN_EXPECTED) }
 }

@@ -1,10 +1,10 @@
 package com.github.mustafaozhan.scopemob
 
-import com.github.mustafaozhan.scopemob.base.BaseCopeTest
+import com.github.mustafaozhan.scopemob.main.MainScopeTest
 import org.junit.Assert
 import org.junit.Test
 
-class OptionalLambdaTest : BaseCopeTest() {
+class OptionalScopeTest : MainScopeTest() {
 
     private var nullString: String? = null
     private var notNullString: String? = SOME_STRING
@@ -32,7 +32,7 @@ class OptionalLambdaTest : BaseCopeTest() {
     }
 
     @Test
-    fun inCase() {
+    fun justInCase() {
         nullString.justInCase {
             nullString = SOME_STRING
         }.apply {

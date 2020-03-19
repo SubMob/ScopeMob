@@ -1,5 +1,6 @@
 package com.github.mustafaozhan.scopemob
 
+import com.github.mustafaozhan.scopemob.main.MainScopeTest
 import org.junit.Assert
 import org.junit.Test
 
