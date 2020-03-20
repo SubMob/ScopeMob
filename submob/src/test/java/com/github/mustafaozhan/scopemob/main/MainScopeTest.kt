@@ -1,12 +1,12 @@
-package mustafaozhan.github.com.scopemob.main
+package com.github.mustafaozhan.scopemob.main
 
-import mustafaozhan.github.com.scopemob.either
-import mustafaozhan.github.com.scopemob.inCase
-import mustafaozhan.github.com.scopemob.inCaseNot
-import mustafaozhan.github.com.scopemob.mapTo
-import mustafaozhan.github.com.scopemob.model.FunctionTestSubject
-import mustafaozhan.github.com.scopemob.whether
-import mustafaozhan.github.com.scopemob.whetherNot
+import com.github.mustafaozhan.scopemob.either
+import com.github.mustafaozhan.scopemob.inCase
+import com.github.mustafaozhan.scopemob.inCaseNot
+import com.github.mustafaozhan.scopemob.mapTo
+import com.github.mustafaozhan.scopemob.model.FunctionTestSubject
+import com.github.mustafaozhan.scopemob.whether
+import com.github.mustafaozhan.scopemob.whetherNot
 import org.junit.Assert
 import org.junit.Assert.assertTrue
 import org.junit.Test

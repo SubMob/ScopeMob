@@ -1,4 +1,4 @@
-package mustafaozhan.github.com.scopemob.model
+package com.github.mustafaozhan.scopemob.model
 
 class FunctionTestSubject {
     var trueCondition = true
