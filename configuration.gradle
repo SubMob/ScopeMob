@@ -3,9 +3,9 @@ repositories {
     google()
 }
 
-def KOTLIN_VERSION = '1.3.70'
+def KOTLIN_VERSION = '1.3.71'
 def JUNIT_VERSION = '4.13'
-def ANDROID_PLUGIN_VERSION = '4.0.0-beta02'
+def ANDROID_PLUGIN_VERSION = '4.0.0-beta04'
 
 def getGitVersion = { ->
     try {
