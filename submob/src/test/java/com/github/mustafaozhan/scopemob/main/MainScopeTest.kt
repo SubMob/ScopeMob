@@ -5,8 +5,8 @@ import com.github.mustafaozhan.scopemob.inCase
 import com.github.mustafaozhan.scopemob.inCaseNot
 import com.github.mustafaozhan.scopemob.mapTo
 import com.github.mustafaozhan.scopemob.model.FunctionTestSubject
-import com.github.mustafaozhan.scopemob.notSame
-import com.github.mustafaozhan.scopemob.same
+import com.github.mustafaozhan.scopemob.notSameAs
+import com.github.mustafaozhan.scopemob.sameAs
 import com.github.mustafaozhan.scopemob.whether
 import com.github.mustafaozhan.scopemob.whetherNot
 import org.junit.Assert
@@ -64,8 +64,8 @@ open class MainScopeTest {
             ?.inCaseNot({ trueCondition }) { Assert.fail(UN_EXPECTED) }
             ?.whetherNot { falseCondition }
             ?.mapTo { it.trueCondition }
-            ?.same { true }
-            ?.notSame { false }
+            ?.sameAs { true }
+            ?.notSameAs { false }
             .whether { true }
             .let {
                 if (it == null) {
@@ -84,8 +84,8 @@ open class MainScopeTest {
             ?.inCaseNot({ trueCondition }) { Assert.fail(UN_EXPECTED) }
             ?.whetherNot { falseCondition }
             ?.mapTo { it.trueCondition }
-            ?.same { true }
-            ?.notSame { false }
+            ?.sameAs { true }
+            ?.notSameAs { false }
             .whether { true }
             ?.let { Assert.fail(UN_EXPECTED) }
     }

@@ -4,17 +4,17 @@ import com.github.mustafaozhan.scopemob.main.MainScopeTest
 import org.junit.Assert
 import org.junit.Test
 
-class SameScopeTest : MainScopeTest() {
+class SameAsScopeTest : MainScopeTest() {
 
     @Test
     fun same() {
         subjectFunction?.trueCondition
-            ?.same { true }
+            ?.sameAs { true }
             ?.let { Assert.assertTrue(EXPECTED, true) }
             ?: run { Assert.fail(UN_EXPECTED) }
 
         subjectFunction?.falseCondition
-            ?.same { false }
+            ?.sameAs { false }
             ?.let { Assert.assertTrue(EXPECTED, true) }
             ?: run { Assert.fail(UN_EXPECTED) }
     }
@@ -22,12 +22,12 @@ class SameScopeTest : MainScopeTest() {
     @Test
     fun notSame() {
         subjectFunction?.falseCondition
-            ?.notSame { true }
+            ?.notSameAs { true }
             ?.let { Assert.assertTrue(EXPECTED, true) }
             ?: run { Assert.fail(UN_EXPECTED) }
 
         subjectFunction?.trueCondition
-            ?.notSame { false }
+            ?.notSameAs { false }
             ?.let { Assert.assertTrue(EXPECTED, true) }
             ?: run { Assert.fail(UN_EXPECTED) }
     }
