@@ -1,3 +1,4 @@
+// Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
 package com.github.mustafaozhan.scopemob
 
 inline fun <reified T, reified R> T.mapTo(

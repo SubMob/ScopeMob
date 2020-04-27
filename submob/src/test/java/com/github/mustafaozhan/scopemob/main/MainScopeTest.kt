@@ -1,3 +1,4 @@
+// Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
 package com.github.mustafaozhan.scopemob.main
 
 import com.github.mustafaozhan.scopemob.either

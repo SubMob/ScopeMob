@@ -24,3 +24,6 @@ and
 	}
 ```
 to build.gradle (app)
+
+### License
+Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
