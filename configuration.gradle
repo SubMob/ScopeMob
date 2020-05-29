@@ -8,7 +8,7 @@ repositories {
 
 def KOTLIN_VERSION = '1.3.72'
 def JUNIT_VERSION = '4.13'
-def ANDROID_PLUGIN_VERSION = '4.0.0-rc01'
+def ANDROID_PLUGIN_VERSION = '4.0.0'
 
 def getGitVersion = { ->
     try {
