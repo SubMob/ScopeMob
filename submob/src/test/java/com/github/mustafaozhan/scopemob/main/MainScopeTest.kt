@@ -12,8 +12,8 @@ import com.github.mustafaozhan.scopemob.notSameAs
 import com.github.mustafaozhan.scopemob.sameAs
 import com.github.mustafaozhan.scopemob.whether
 import com.github.mustafaozhan.scopemob.whetherNot
-import org.junit.Assert
 import org.junit.Assert.assertTrue
+import org.junit.Assert.fail
 import org.junit.Test
 
 open class MainScopeTest {
@@ -34,24 +34,24 @@ open class MainScopeTest {
             ?.whether { it.trueCondition }
             ?.whetherNot { falseCondition }
             ?.inCase(true) { assertTrue(EXPECTED, true) }
-            ?.inCaseNot(true) { Assert.fail(UN_EXPECTED) }
+            ?.inCaseNot(true) { fail(UN_EXPECTED) }
             ?.inCase({ trueCondition }) { assertTrue(EXPECTED, true) }
-            ?.inCaseNot({ trueCondition }) { Assert.fail(UN_EXPECTED) }
+            ?.inCaseNot({ trueCondition }) { fail(UN_EXPECTED) }
             ?.whetherNot { it.trueCondition } // exit chain
             ?.whether { true }
-            ?.let { Assert.fail(UN_EXPECTED) }
+            ?.let { fail(UN_EXPECTED) }
             ?: run { assertTrue(EXPECTED, true) }
 
         subjectFunction
             ?.whether { it.trueCondition }
             ?.whetherNot { falseCondition }
             ?.inCase(true) { assertTrue(EXPECTED, true) }
-            ?.inCaseNot(true) { Assert.fail(UN_EXPECTED) }
+            ?.inCaseNot(true) { fail(UN_EXPECTED) }
             ?.inCase({ trueCondition }) { assertTrue(EXPECTED, true) }
-            ?.inCaseNot({ trueCondition }) { Assert.fail(UN_EXPECTED) }
+            ?.inCaseNot({ trueCondition }) { fail(UN_EXPECTED) }
             ?.either({ it.falseCondition }, { falseCondition }) // exit chain
             ?.whether { true }
-            ?.let { Assert.fail(UN_EXPECTED) }
+            ?.let { fail(UN_EXPECTED) }
             ?: run { assertTrue(EXPECTED, true) }
     }
 
@@ -62,9 +62,9 @@ open class MainScopeTest {
             ?.whether { it.trueCondition }
             ?.either({ it.falseCondition }, { trueCondition })
             ?.inCase(true) { assertTrue(EXPECTED, true) }
-            ?.inCaseNot(true) { Assert.fail(UN_EXPECTED) }
+            ?.inCaseNot(true) { fail(UN_EXPECTED) }
             ?.inCase({ trueCondition }) { assertTrue(EXPECTED, true) }
-            ?.inCaseNot({ trueCondition }) { Assert.fail(UN_EXPECTED) }
+            ?.inCaseNot({ trueCondition }) { fail(UN_EXPECTED) }
             ?.whetherNot { falseCondition }
             ?.mapTo { it.trueCondition }
             ?.sameAs { true }
@@ -74,7 +74,7 @@ open class MainScopeTest {
                 if (it == null) {
                     assertTrue(EXPECTED, true)
                 } else {
-                    Assert.fail(UN_EXPECTED)
+                    fail(UN_EXPECTED)
                 }
             }
         subjectFunction = null
@@ -82,14 +82,14 @@ open class MainScopeTest {
             ?.whether { it.trueCondition }
             ?.either({ it.falseCondition }, { trueCondition })
             ?.inCase(true) { assertTrue(EXPECTED, true) }
-            ?.inCaseNot(true) { Assert.fail(UN_EXPECTED) }
+            ?.inCaseNot(true) { fail(UN_EXPECTED) }
             ?.inCase({ trueCondition }) { assertTrue(EXPECTED, true) }
-            ?.inCaseNot({ trueCondition }) { Assert.fail(UN_EXPECTED) }
+            ?.inCaseNot({ trueCondition }) { fail(UN_EXPECTED) }
             ?.whetherNot { falseCondition }
             ?.mapTo { it.trueCondition }
             ?.sameAs { true }
             ?.notSameAs { false }
             .whether { true }
-            ?.let { Assert.fail(UN_EXPECTED) }
+            ?.let { fail(UN_EXPECTED) }
     }
 }

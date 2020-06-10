@@ -4,7 +4,11 @@
 package com.github.mustafaozhan.scopemob
 
 import com.github.mustafaozhan.scopemob.main.MainScopeTest
-import org.junit.Assert
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
+import org.junit.Assert.fail
 import org.junit.Test
 
 class OptionalScopeTest : MainScopeTest() {
@@ -18,9 +22,9 @@ class OptionalScopeTest : MainScopeTest() {
             subjectFunction?.falseCondition,
             subjectFunction?.trueCondition
         ) {
-            Assert.assertTrue(EXPECTED, true)
+            assertTrue(EXPECTED, true)
         } ?: run {
-            Assert.fail(UN_EXPECTED)
+            fail(UN_EXPECTED)
         }
 
         ensure(
@@ -28,9 +32,9 @@ class OptionalScopeTest : MainScopeTest() {
             subjectFunction?.trueCondition,
             subjectFunction?.nullAbleCondition
         ) {
-            Assert.fail(UN_EXPECTED)
+            fail(UN_EXPECTED)
         } ?: run {
-            Assert.assertTrue(EXPECTED, true)
+            assertTrue(EXPECTED, true)
         }
     }
 
@@ -39,8 +43,8 @@ class OptionalScopeTest : MainScopeTest() {
         nullString.justInCase {
             nullString = SOME_STRING
         }.apply {
-            Assert.assertNotNull(nullString)
-            Assert.assertEquals(SOME_STRING, nullString)
+            assertNotNull(nullString)
+            assertEquals(SOME_STRING, nullString)
         }
 
         resetString()
@@ -48,8 +52,8 @@ class OptionalScopeTest : MainScopeTest() {
         nullString.justInCase {
             nullString = SOME_STRING
         }.let {
-            Assert.assertNotNull(nullString)
-            Assert.assertEquals(SOME_STRING, nullString)
+            assertNotNull(nullString)
+            assertEquals(SOME_STRING, nullString)
         }
 
         resetString()
@@ -57,15 +61,15 @@ class OptionalScopeTest : MainScopeTest() {
         nullString.justInCase {
             // not initialized
         }.apply {
-            Assert.assertNull(nullString)
+            assertNull(nullString)
         }
 
         resetString()
 
         notNullString.justInCase {
-            Assert.fail(UN_EXPECTED)
+            fail(UN_EXPECTED)
         }.let {
-            Assert.assertEquals(SOME_STRING, notNullString)
+            assertEquals(SOME_STRING, notNullString)
         }
     }
 
