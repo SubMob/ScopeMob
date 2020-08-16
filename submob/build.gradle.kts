@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    with(ScopeMob.Conf) {
+    with(ProjectSettings) {
         compileSdkVersion(projectCompileSdkVersion)
 
         defaultConfig {
@@ -21,6 +21,6 @@ android {
 }
 
 dependencies {
-    implementation(ScopeMob.Dependencies.kotlin)
-    testImplementation(ScopeMob.TestDependencies.jUnit)
+    implementation(Dependencies.kotlin)
+    testImplementation(TestDependencies.jUnit)
 }
