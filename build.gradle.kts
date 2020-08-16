@@ -7,8 +7,10 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath(ScopeMob.Classpaths.androidBuildTools)
-        classpath(ScopeMob.Classpaths.kotlinGradlePlugin)
+        with(ScopeMob.Classpaths) {
+            classpath(androidBuildTools)
+            classpath(kotlinGradlePlugin)
+        }
     }
 }
 

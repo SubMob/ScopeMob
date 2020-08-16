@@ -1,10 +1,11 @@
 /*
- Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
- */
-@file:Suppress("SpellCheckingInspection")
-/*
 Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
 */
+@file:Suppress("SpellCheckingInspection")
+
+import org.gradle.api.Project
+import java.io.File
+import java.util.concurrent.TimeUnit
 
 object ScopeMob {
     object Versions {
@@ -17,28 +18,31 @@ object ScopeMob {
         const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlinVersion}"
     }
 
-    object Tests {
+    object TestDependencies {
         const val jUnit = "junit:junit:${Versions.jUnitVersion}"
     }
 
     object Classpaths {
-        const val androidBuildTools = "com.android.tools.build:gradle:${Versions.androidPluginVersion}"
-        const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
+        const val androidBuildTools =
+            "com.android.tools.build:gradle:${Versions.androidPluginVersion}"
+        const val kotlinGradlePlugin =
+            "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
     }
 
-    object Configurations {
-        private const val mayorVersion = 2
-        private const val minorVersion = 0
+    object Conf {
+        private const val projectMayorVersion = 2
+        private const val projectMinorVersion = 0
 
-        const val compileSdkVersion = 29
-        const val minSdkVersion = 21
-        const val targetSdkVersion = 29
+        const val projectCompileSdkVersion = 29
+        const val projectMinSdkVersion = 21
+        const val projectTargetSdkVersion = 29
 
         fun getVersionCode(project: Project) = gitCommitCount(project).let {
             if (it.isEmpty()) 1 else it.toInt()
         }
 
-        fun getVersionName(project: Project) = "$mayorVersion.$minorVersion.${gitCommitCount(project)}"
+        fun getVersionName(project: Project) =
+            "$projectMayorVersion.$projectMinorVersion.${gitCommitCount(project)}"
 
         private fun gitCommitCount(project: Project) =
             "git rev-list --first-parent --count origin/master"
@@ -56,7 +60,7 @@ object ScopeMob {
                     waitFor(10, TimeUnit.SECONDS)
                     inputStream.bufferedReader().readText()
                 }
-        } catch (e: IOException) {
+        } catch (e: java.io.IOException) {
             e.printStackTrace()
             null
         }
