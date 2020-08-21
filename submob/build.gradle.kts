@@ -2,8 +2,10 @@
  Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
 plugins {
-    id("com.android.library")
-    kotlin("android")
+    with(Plugins) {
+        id(library)
+        kotlin(android)
+    }
 }
 
 android {
