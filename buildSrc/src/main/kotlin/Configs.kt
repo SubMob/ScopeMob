@@ -14,7 +14,18 @@ object Versions {
 }
 
 object Dependencies {
-    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlinVersion}"
+    object Common {
+        const val test = "test-common"
+        const val testAnnotations = "test-annotations-common"
+    }
+
+    object JVM {
+        const val testJUnit = "test-junit"
+    }
+
+    object JS {
+        const val test = "test-js"
+    }
 }
 
 object TestDependencies {
@@ -29,8 +40,8 @@ object Classpaths {
 }
 
 object Plugins {
-    const val library = "com.android.library"
-    const val android = "android"
+    const val androidLibrary = "com.android.library"
+    const val multiplatform = "multiplatform"
 }
 
 object ProjectSettings {

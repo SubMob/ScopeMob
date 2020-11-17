@@ -4,99 +4,99 @@
 package com.github.mustafaozhan.scopemob
 
 import com.github.mustafaozhan.scopemob.main.MainScopeTest
-import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertTrue
+import kotlin.test.fail
 
 class WhetherScopeTest : MainScopeTest() {
 
     @Test
-    fun `whether true`() {
+    fun whetherTrue() {
         subjectFunction
             ?.whether { it.trueCondition }
             ?.whether { trueCondition }
-            ?.let { assertTrue(EXPECTED, true) }
+            ?.let { assertTrue(true, EXPECTED) }
             ?: run { fail(UN_EXPECTED) }
 
         // vararg
         subjectFunction
             ?.whether({ it.trueCondition }, { trueCondition })
-            ?.let { assertTrue(EXPECTED, true) }
+            ?.let { assertTrue(true, EXPECTED) }
             ?: run { fail(UN_EXPECTED) }
     }
 
     @Test
-    fun `whether  false`() {
+    fun whetherFalse() {
         subjectFunction
             ?.whether { it.falseCondition }
             ?.whether { falseCondition }
             ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(EXPECTED, true) }
+            ?: run { assertTrue(true, EXPECTED) }
 
         // vararg
         subjectFunction
             ?.whether({ it.falseCondition }, { falseCondition })
             ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(EXPECTED, true) }
+            ?: run { assertTrue(true, EXPECTED) }
     }
 
     @Test
-    fun `whether mix`() {
+    fun whetherMix() {
         subjectFunction
             ?.whether { it.trueCondition }
             ?.whether { falseCondition }
             ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(EXPECTED, true) }
+            ?: run { assertTrue(true, EXPECTED) }
 
         // vararg
         subjectFunction
             ?.whether({ it.trueCondition }, { falseCondition })
             ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(EXPECTED, true) }
+            ?: run { assertTrue(true, EXPECTED) }
     }
 
     @Test
-    fun `whetherNot false`() {
+    fun whetherNotFalse() {
         subjectFunction
             ?.whetherNot { it.falseCondition }
             ?.whetherNot { falseCondition }
-            ?.let { assertTrue(EXPECTED, true) }
+            ?.let { assertTrue(true, EXPECTED) }
             ?: run { fail(UN_EXPECTED) }
 
         // vararg
         subjectFunction
             ?.whetherNot({ it.falseCondition }, { falseCondition })
-            ?.let { assertTrue(EXPECTED, true) }
+            ?.let { assertTrue(true, EXPECTED) }
             ?: run { fail(UN_EXPECTED) }
     }
 
     @Test
-    fun `whetherNot true`() {
+    fun whetherNotTrue() {
         subjectFunction
             ?.whetherNot { it.trueCondition }
             ?.whetherNot { trueCondition }
             ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(EXPECTED, true) }
+            ?: run { assertTrue(true, EXPECTED) }
 
         // vararg
         subjectFunction
             ?.whetherNot({ it.trueCondition }, { trueCondition })
             ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(EXPECTED, true) }
+            ?: run { assertTrue(true, EXPECTED) }
     }
 
     @Test
-    fun `whetherNot mix`() {
+    fun whetherNotMix() {
         subjectFunction
             ?.whetherNot { it.falseCondition }
             ?.whetherNot { trueCondition }
             ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(EXPECTED, true) }
+            ?: run { assertTrue(true, EXPECTED) }
 
         // vararg
         subjectFunction
             ?.whetherNot({ it.falseCondition }, { trueCondition })
-            ?.let { assertTrue(EXPECTED, true) }
+            ?.let { assertTrue(true, EXPECTED) }
             ?: run { fail(UN_EXPECTED) }
     }
 }

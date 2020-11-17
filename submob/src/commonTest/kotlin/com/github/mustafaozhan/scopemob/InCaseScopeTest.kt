@@ -4,9 +4,9 @@
 package com.github.mustafaozhan.scopemob
 
 import com.github.mustafaozhan.scopemob.main.MainScopeTest
-import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertTrue
+import kotlin.test.fail
 
 class InCaseScopeTest : MainScopeTest() {
 
@@ -19,10 +19,10 @@ class InCaseScopeTest : MainScopeTest() {
 
         subjectFunction
             ?.whether { trueCondition }
-            ?.inCase(true) { assertTrue(EXPECTED, true) }
+            ?.inCase(true) { assertTrue(true, EXPECTED) }
             ?.inCase(false) { fail(UN_EXPECTED) }
-            ?.inCase(true) { assertTrue(EXPECTED, true) }
-            ?.let { assertTrue(EXPECTED, true) }
+            ?.inCase(true) { assertTrue(true, EXPECTED) }
+            ?.let { assertTrue(true, EXPECTED) }
             ?: run { fail(UN_EXPECTED) }
     }
 
@@ -35,15 +35,15 @@ class InCaseScopeTest : MainScopeTest() {
 
         subjectFunction
             ?.whether { trueCondition }
-            ?.inCaseNot(false) { assertTrue(EXPECTED, true) }
+            ?.inCaseNot(false) { assertTrue(true, EXPECTED) }
             ?.inCaseNot(true) { fail(UN_EXPECTED) }
-            ?.inCaseNot(false) { assertTrue(EXPECTED, true) }
-            ?.let { assertTrue(EXPECTED, true) }
+            ?.inCaseNot(false) { assertTrue(true, EXPECTED) }
+            ?.let { assertTrue(true, EXPECTED) }
             ?: run { fail(UN_EXPECTED) }
     }
 
     @Test
-    fun `inCase scope`() {
+    fun inCaseScope() {
         subjectFunction
             ?.inCase({ falseCondition }) {
                 fail(UN_EXPECTED)
@@ -51,15 +51,15 @@ class InCaseScopeTest : MainScopeTest() {
 
         subjectFunction
             ?.whether { trueCondition }
-            ?.inCase({ trueCondition }) { assertTrue(EXPECTED, true) }
+            ?.inCase({ trueCondition }) { assertTrue(true, EXPECTED) }
             ?.inCase({ falseCondition }) { fail(UN_EXPECTED) }
-            ?.inCase({ trueCondition }) { assertTrue(EXPECTED, true) }
-            ?.let { assertTrue(EXPECTED, true) }
+            ?.inCase({ trueCondition }) { assertTrue(true, EXPECTED) }
+            ?.let { assertTrue(true, EXPECTED) }
             ?: run { fail(UN_EXPECTED) }
     }
 
     @Test
-    fun `inCaseNot scope`() {
+    fun inCaseNotScope() {
         subjectFunction
             ?.inCaseNot({ trueCondition }) {
                 fail(UN_EXPECTED)
@@ -67,10 +67,10 @@ class InCaseScopeTest : MainScopeTest() {
 
         subjectFunction
             ?.whether { trueCondition }
-            ?.inCaseNot({ falseCondition }) { assertTrue(EXPECTED, true) }
+            ?.inCaseNot({ falseCondition }) { assertTrue(true, EXPECTED) }
             ?.inCaseNot({ trueCondition }) { fail(UN_EXPECTED) }
-            ?.inCaseNot({ falseCondition }) { assertTrue(EXPECTED, true) }
-            ?.let { assertTrue(EXPECTED, true) }
+            ?.inCaseNot({ falseCondition }) { assertTrue(true, EXPECTED) }
+            ?.let { assertTrue(true, EXPECTED) }
             ?: run { fail(UN_EXPECTED) }
     }
 }

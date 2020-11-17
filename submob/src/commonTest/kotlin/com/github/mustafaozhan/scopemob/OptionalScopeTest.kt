@@ -4,12 +4,12 @@
 package com.github.mustafaozhan.scopemob
 
 import com.github.mustafaozhan.scopemob.main.MainScopeTest
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlin.test.fail
 
 class OptionalScopeTest : MainScopeTest() {
 
@@ -22,7 +22,7 @@ class OptionalScopeTest : MainScopeTest() {
             subjectFunction?.falseCondition,
             subjectFunction?.trueCondition
         ) {
-            assertTrue(EXPECTED, true)
+            assertTrue(true, EXPECTED)
         } ?: run {
             fail(UN_EXPECTED)
         }
@@ -34,7 +34,7 @@ class OptionalScopeTest : MainScopeTest() {
         ) {
             fail(UN_EXPECTED)
         } ?: run {
-            assertTrue(EXPECTED, true)
+            assertTrue(true, EXPECTED)
         }
     }
 
