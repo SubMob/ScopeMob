@@ -8,7 +8,7 @@ import java.io.File
 import java.util.concurrent.TimeUnit
 
 object Versions {
-    const val kotlinVersion = "1.4.0"
+    const val kotlinVersion = "1.4.20-RC"
     const val androidPluginVersion = "4.0.1"
     const val jUnitVersion = "4.13"
 }
