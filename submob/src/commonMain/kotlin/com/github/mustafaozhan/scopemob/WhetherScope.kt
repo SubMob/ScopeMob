@@ -5,7 +5,7 @@ package com.github.mustafaozhan.scopemob
 
 inline fun <reified T> T.whether(
     method: T.(condition: T) -> Boolean
-) =
+): T? =
     if (this != null && method(this)) {
         this
     } else {
@@ -14,7 +14,7 @@ inline fun <reified T> T.whether(
 
 inline fun <reified T> T.whether(
     vararg method: T.(condition: T) -> Boolean
-) =
+): T? =
     if (this != null) {
         if (method.all { it(this) }) {
             this
@@ -27,7 +27,7 @@ inline fun <reified T> T.whether(
 
 inline fun <reified T> T.whetherNot(
     method: T.(condition: T) -> Boolean
-) =
+): T? =
     if (this != null && !method(this)) {
         this
     } else {
@@ -36,7 +36,7 @@ inline fun <reified T> T.whetherNot(
 
 inline fun <reified T> T.whetherNot(
     vararg method: T.(condition: T) -> Boolean
-) =
+): T? =
     if (this != null) {
         if (!method.all { it(this) }) {
             this

@@ -8,9 +8,8 @@ import java.io.File
 import java.util.concurrent.TimeUnit
 
 object Versions {
-    const val kotlinVersion = "1.4.20-RC"
-    const val androidPluginVersion = "4.0.1"
-    const val jUnitVersion = "4.13"
+    const val kotlin = "1.4.20-RC"
+    const val androidPlugin = "4.2.0-alpha16"
 }
 
 object Dependencies {
@@ -28,15 +27,11 @@ object Dependencies {
     }
 }
 
-object TestDependencies {
-    const val jUnit = "junit:junit:${Versions.jUnitVersion}"
-}
-
 object Classpaths {
     const val androidBuildTools =
-        "com.android.tools.build:gradle:${Versions.androidPluginVersion}"
+        "com.android.tools.build:gradle:${Versions.androidPlugin}"
     const val kotlinGradlePlugin =
-        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
+        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 }
 
 object Plugins {
@@ -45,8 +40,8 @@ object Plugins {
 }
 
 object ProjectSettings {
-    private const val projectMayorVersion = 2
-    private const val projectMinorVersion = 0
+    private const val mayorVersion = 2
+    private const val minorVersion = 0
 
     const val projectCompileSdkVersion = 29
     const val projectMinSdkVersion = 21
@@ -57,7 +52,7 @@ object ProjectSettings {
     }
 
     fun getVersionName(project: Project) =
-        "$projectMayorVersion.$projectMinorVersion.${gitCommitCount(project)}"
+        "$mayorVersion.$minorVersion.${gitCommitCount(project)}"
 
     private fun gitCommitCount(project: Project) =
         "git rev-list --first-parent --count origin/master"

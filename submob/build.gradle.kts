@@ -11,11 +11,6 @@ plugins {
     }
 }
 
-repositories {
-    gradlePluginPortal()
-    google()
-}
-
 kotlin {
 
     jvm()
@@ -42,13 +37,11 @@ kotlin {
     @Suppress("UNUSED_VARIABLE")
     sourceSets {
 
-        with(Dependencies.Common) {
-            val commonMain by getting
-            val commonTest by getting {
-                dependencies {
-                    implementation(kotlin(test))
-                    implementation(kotlin(testAnnotations))
-                }
+        val commonMain by getting
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin(Dependencies.Common.test))
+                implementation(kotlin(Dependencies.Common.testAnnotations))
             }
         }
 
@@ -62,21 +55,17 @@ kotlin {
         val iosMain by getting
         val iosTest by getting
 
-        with(Dependencies.JVM) {
-            val jvmMain by getting
-            val jvmTest by getting {
-                dependencies {
-                    implementation(kotlin(testJUnit))
-                }
+        val jvmMain by getting
+        val jvmTest by getting {
+            dependencies {
+                implementation(kotlin(Dependencies.JVM.testJUnit))
             }
         }
 
-        with(Dependencies.JS) {
-            val jsMain by getting
-            val jsTest by getting {
-                dependencies {
-                    implementation(kotlin(test))
-                }
+        val jsMain by getting
+        val jsTest by getting {
+            dependencies {
+                implementation(kotlin(Dependencies.JS.test))
             }
         }
     }
@@ -84,7 +73,7 @@ kotlin {
 
 android {
     with(ProjectSettings) {
-        compileSdkVersion(projectTargetSdkVersion)
+        compileSdkVersion(projectCompileSdkVersion)
 
         defaultConfig {
             minSdkVersion(projectMinSdkVersion)
@@ -94,10 +83,6 @@ android {
         }
 
         sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
 
