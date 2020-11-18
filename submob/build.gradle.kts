@@ -2,8 +2,6 @@
  Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
 
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     with(Plugins) {
         id(androidLibrary)
@@ -103,9 +101,3 @@ val packForXcode by tasks.creating(Sync::class) {
 }
 
 tasks.getByName("build").dependsOn(packForXcode)
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
