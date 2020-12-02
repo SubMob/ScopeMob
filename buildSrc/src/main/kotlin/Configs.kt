@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 
 object Versions {
     const val kotlin = "1.4.20"
-    const val androidPlugin = "4.2.0-alpha16"
+    const val androidPlugin = "4.2.0-beta01"
 }
 
 object Dependencies {
