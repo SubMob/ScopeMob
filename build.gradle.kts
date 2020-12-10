@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
+ * Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
 buildscript {
     repositories {
@@ -7,7 +7,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        with(Classpaths) {
+        with(ClassPaths) {
             classpath(androidBuildTools)
             classpath(kotlinGradlePlugin)
         }

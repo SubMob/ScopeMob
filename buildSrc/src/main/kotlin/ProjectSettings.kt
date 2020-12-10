@@ -1,43 +1,9 @@
 /*
  * Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
-@file:Suppress("SpellCheckingInspection")
-
 import org.gradle.api.Project
 import java.io.File
 import java.util.concurrent.TimeUnit
-
-object Versions {
-    const val kotlin = "1.4.21"
-    const val androidPlugin = "7.0.0-alpha02"
-}
-
-object Dependencies {
-    object Common {
-        const val test = "test-common"
-        const val testAnnotations = "test-annotations-common"
-    }
-
-    object JVM {
-        const val testJUnit = "test-junit"
-    }
-
-    object JS {
-        const val test = "test-js"
-    }
-}
-
-object Classpaths {
-    const val androidBuildTools =
-        "com.android.tools.build:gradle:${Versions.androidPlugin}"
-    const val kotlinGradlePlugin =
-        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-}
-
-object Plugins {
-    const val androidLibrary = "com.android.library"
-    const val multiplatform = "multiplatform"
-}
 
 object ProjectSettings {
     private const val mayorVersion = 2
