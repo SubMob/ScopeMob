@@ -3,6 +3,6 @@
  */
 
 object Versions {
-    const val kotlin = "1.4.21"
-    const val androidPlugin = "4.0.2"
+    const val kotlin = "1.4.30-M1"
+    const val androidPlugin = "7.0.0-alpha03"
 }
