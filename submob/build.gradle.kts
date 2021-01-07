@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
+ * Copyright (c) 2021 Mustafa Ozhan. All rights reserved.
  */
 
 plugins {
@@ -80,7 +80,7 @@ android {
             versionName = getVersionName(project)
         }
 
-        // todo remove after androidPlugin = "7.0.0-alpha03" fixed
+        // todo remove after androidPlugin = "7.0.0-alpha04" fixed
         configurations {
             create("testApi") {}
             create("testDebugApi") {}
