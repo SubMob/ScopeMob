@@ -14,6 +14,8 @@ buildscript {
     }
 }
 
+version = "2.0.0"
+
 allprojects {
     repositories {
         jcenter()

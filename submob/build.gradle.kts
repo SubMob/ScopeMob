@@ -9,6 +9,8 @@ plugins {
     }
 }
 
+version = "2.0.0"
+
 kotlin {
 
     jvm()
