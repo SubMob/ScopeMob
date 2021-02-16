@@ -3,19 +3,12 @@
  */
 
 plugins {
-    with(Plugins) {
-        id(androidLibrary)
-        kotlin(multiplatform)
-    }
+    kotlin(Plugins.multiplatform)
 }
-
-version = "2.0.0"
 
 kotlin {
 
     jvm()
-
-    android()
 
     ios {
         binaries {
@@ -45,13 +38,6 @@ kotlin {
             }
         }
 
-        val androidMain by getting
-        val androidTest by getting {
-            dependencies {
-                implementation(kotlin(Dependencies.JVM.testJUnit))
-            }
-        }
-
         val iosMain by getting
         val iosTest by getting
 
@@ -68,27 +54,5 @@ kotlin {
                 implementation(kotlin(Dependencies.JS.test))
             }
         }
-    }
-}
-
-android {
-    with(ProjectSettings) {
-        compileSdkVersion(projectCompileSdkVersion)
-
-        defaultConfig {
-            minSdkVersion(projectMinSdkVersion)
-            targetSdkVersion(projectTargetSdkVersion)
-            versionCode = getVersionCode(project)
-            versionName = getVersionName(project)
-        }
-
-        // todo https://youtrack.jetbrains.com/issue/KT-43944
-        configurations {
-            create("testApi") {}
-            create("testDebugApi") {}
-            create("testReleaseApi") {}
-        }
-
-        sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     }
 }
