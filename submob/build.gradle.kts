@@ -2,8 +2,6 @@
  * Copyright (c) 2021 Mustafa Ozhan. All rights reserved.
  */
 
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     with(Plugins) {
         id(androidLibrary)
@@ -90,11 +88,5 @@ android {
         }
 
         sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    }
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
