@@ -4,6 +4,8 @@
 
 plugins {
     kotlin(Plugins.multiplatform)
+    `maven-publish`
+    signing
 }
 
 kotlin {
