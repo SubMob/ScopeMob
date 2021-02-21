@@ -35,14 +35,6 @@ allprojects {
 
         extensions.findByType<PublishingExtension>()?.apply {
 
-            publications {
-                create<MavenPublication>("maven") {
-                    groupId = Library.libraryGroup
-                    artifactId = Library.libraryArtifact
-                    version = Library.libraryVersion
-                }
-            }
-
             repositories {
                 maven {
 
@@ -62,7 +54,9 @@ allprojects {
 
             publications.withType<MavenPublication>().configureEach {
                 artifact(emptyJavadocJar.get())
-
+                groupId = Library.libraryGroup
+                artifactId = Library.libraryArtifact
+                version = Library.libraryVersion
                 pom {
                     name.set(Library.libraryName)
                     description.set(Library.libraryDescription)
@@ -108,7 +102,7 @@ allprojects {
 object Library {
     const val libraryGroup = "com.github.sub-mob"
     const val libraryArtifact = "scopemob"
-    const val libraryVersion = "2.0.0"
+    const val libraryVersion = "2.0.1"
 
     const val publishPlugin = "maven-publish"
 
