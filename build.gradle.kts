@@ -1,7 +1,6 @@
 /*
  * Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
-import org.jetbrains.kotlin.konan.properties.Properties
 
 plugins {
     `maven-publish`
@@ -15,14 +14,6 @@ buildscript {
     dependencies {
         classpath(ClassPaths.kotlinGradlePlugin)
     }
-}
-
-val props = Properties()
-
-try {
-    props.load(rootProject.file("key.properties").inputStream())
-} catch (e: Exception) {
-    // keys are private and can not be committed to git
 }
 
 allprojects {
@@ -63,8 +54,8 @@ allprojects {
                         }
                     )
                     credentials {
-                        username = props["sonar.username"]?.toString()
-                        password = props["sonar.password"]?.toString()
+                        username = System.getenv("MAVEN_USERNAME")?.toString()
+                        password = System.getenv("MAVEN_PASSWORD")?.toString()
                     }
                 }
             }
@@ -101,8 +92,8 @@ allprojects {
         extensions.findByType<SigningExtension>()?.apply {
             val publishing = extensions.findByType<PublishingExtension>() ?: return@apply
 
-            val signingKey = props["gpg.key"]?.toString()?.replace("\\n", "\n")
-            val signingPassword = props["gpg.password"]?.toString()
+            val signingKey = System.getenv("GPG_KEY")?.replace("\\n", "\n")
+            val signingPassword = System.getenv("GPG_PASSWORD")?.toString()
             useInMemoryPgpKeys(signingKey, signingPassword)
 
             sign(publishing.publications)
@@ -135,4 +126,4 @@ object Library {
 }
 
 val isReleaseBuild: Boolean
-    get() = props.containsKey("gpg.key")
+    get() = System.getenv("GPG_KEY") != null
