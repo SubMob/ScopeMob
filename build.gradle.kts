@@ -37,7 +37,7 @@ allprojects {
             extensions.findByType<PublishingExtension>()?.apply {
                 repositories {
                     maven {
-                        url = uri(releaseUrl)
+                        url = uri(if (isReleaseBuild) releaseUrl else snapshotUrl)
                         credentials {
                             username = System.getenv("MAVEN_USERNAME")?.toString()
                             password = System.getenv("MAVEN_PASSWORD")?.toString()
@@ -109,9 +109,6 @@ object Library {
     const val licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
     const val licenseDistribution = "repo"
 
-    val releaseUrl = if (isReleaseBuild) {
-        "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-    } else {
-        "https://oss.sonatype.org/content/repositories/snapshots"
-    }
+    const val releaseUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+    const val snapshotUrl = "https://oss.sonatype.org/content/repositories/snapshots"
 }
