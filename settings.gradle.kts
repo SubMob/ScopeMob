@@ -13,4 +13,4 @@ pluginManagement {
 }
 
 rootProject.name = "scopemob"
-include(":submob")
+include(":scopemob")

@@ -3,15 +3,8 @@
  */
 package com.github.mustafaozhan.scopemob.main
 
-import com.github.mustafaozhan.scopemob.either
-import com.github.mustafaozhan.scopemob.inCase
-import com.github.mustafaozhan.scopemob.inCaseNot
-import com.github.mustafaozhan.scopemob.mapTo
+import com.github.mustafaozhan.scopemob.*
 import com.github.mustafaozhan.scopemob.model.FunctionTestSubject
-import com.github.mustafaozhan.scopemob.notSameAs
-import com.github.mustafaozhan.scopemob.sameAs
-import com.github.mustafaozhan.scopemob.whether
-import com.github.mustafaozhan.scopemob.whetherNot
 import kotlin.test.Test
 import kotlin.test.assertTrue
 import kotlin.test.fail
