@@ -93,7 +93,7 @@ val isReleaseBuild: Boolean
 object Library {
     const val libraryGroup = "com.github.sub-mob"
     const val libraryArtifact = "scopemob"
-    const val libraryVersion = "2.0.0"
+    const val libraryVersion = "2.0.1"
 
     const val publishPlugin = "maven-publish"
 
