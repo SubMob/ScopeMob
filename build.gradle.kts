@@ -18,86 +18,77 @@ buildscript {
 
 allprojects {
 
-    group = Library.libraryGroup
-    version = Library.libraryVersion
+    with(Library) {
 
-    repositories {
-        google()
-        mavenCentral()
-        jcenter()
-    }
+        group = libraryGroup
+        version = libraryVersion
 
-    val emptyJavadocJar by tasks.registering(Jar::class) {
-        archiveClassifier.set("javadoc")
-    }
+        repositories {
+            google()
+            mavenCentral()
+            jcenter()
+        }
 
-    afterEvaluate {
+        val emptyJavadocJar by tasks.registering(Jar::class) {
+            archiveClassifier.set("javadoc")
+        }
 
-        extensions.findByType<PublishingExtension>()?.apply {
-
-            repositories {
-                maven {
-
-                    url = uri(
-                        if (isReleaseBuild) {
-                            "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-                        } else {
-                            "https://oss.sonatype.org/content/repositories/snapshots"
+        afterEvaluate {
+            extensions.findByType<PublishingExtension>()?.apply {
+                repositories {
+                    maven {
+                        url = uri(releaseUrl)
+                        credentials {
+                            username = System.getenv("MAVEN_USERNAME")?.toString()
+                            password = System.getenv("MAVEN_PASSWORD")?.toString()
                         }
-                    )
-                    credentials {
-                        username = System.getenv("MAVEN_USERNAME")?.toString()
-                        password = System.getenv("MAVEN_PASSWORD")?.toString()
+                    }
+                }
+
+                publications.withType<MavenPublication>().configureEach {
+                    artifact(emptyJavadocJar.get())
+
+                    pom {
+                        name.set(libraryName)
+                        description.set(libraryDescription)
+                        url.set(libraryUrl)
+
+                        licenses {
+                            license {
+                                name.set(licenseName)
+                                url.set(licenseUrl)
+                                distribution.set(licenseDistribution)
+                            }
+                        }
+                        developers {
+                            developer {
+                                id.set(developerId)
+                                name.set(developerName)
+                                email.set(developerEmail)
+                            }
+                        }
+                        scm { url.set(libraryUrl) }
                     }
                 }
             }
 
-            publications.withType<MavenPublication>().configureEach {
-                artifact(emptyJavadocJar.get())
-                groupId = Library.libraryGroup
-                artifactId = Library.libraryArtifact
-                version = Library.libraryVersion
-                pom {
-                    name.set(Library.libraryName)
-                    description.set(Library.libraryDescription)
-                    url.set(Library.libraryUrl)
-
-                    licenses {
-                        license {
-                            name.set(Library.licenseName)
-                            url.set(Library.licenseUrl)
-                            distribution.set(Library.licenseDistribution)
-                        }
-                    }
-                    developers {
-                        developer {
-                            id.set(Library.developerId)
-                            name.set(Library.developerName)
-                            email.set(Library.developerEmail)
-                        }
-                    }
-                    scm {
-                        url.set(Library.libraryUrl)
-                    }
-                }
+            extensions.findByType<SigningExtension>()?.apply {
+                val publishing = extensions.findByType<PublishingExtension>() ?: return@apply
+                val key = System.getenv("GPG_KEY")?.toString()?.replace("\\n", "\n")
+                val password = System.getenv("GPG_PASSWORD")?.toString()
+                useInMemoryPgpKeys(key, password)
+                sign(publishing.publications)
             }
-        }
 
-        extensions.findByType<SigningExtension>()?.apply {
-            val publishing = extensions.findByType<PublishingExtension>() ?: return@apply
-
-            val signingKey = System.getenv("GPG_KEY")?.replace("\\n", "\n")
-            val signingPassword = System.getenv("GPG_PASSWORD")?.toString()
-            useInMemoryPgpKeys(signingKey, signingPassword)
-
-            sign(publishing.publications)
-        }
-
-        tasks.withType<Sign>().configureEach {
-            onlyIf { isReleaseBuild }
+            tasks.withType<Sign>().configureEach {
+                onlyIf { isReleaseBuild }
+            }
         }
     }
 }
+
+val isReleaseBuild: Boolean
+    get() = System.getenv("GPG_KEY") != null
 
 object Library {
     const val libraryGroup = "com.github.sub-mob"
@@ -108,7 +99,7 @@ object Library {
 
     const val libraryUrl = "https://github.com/SUB-MOB/scopemob"
     const val libraryName = "Scope Mob"
-    const val libraryDescription = "Set of useful scope and Higher-order functions"
+    const val libraryDescription = "Set of useful scope and higher-order functions"
 
     const val developerName = "Mustafa Ozhan"
     const val developerId = "mustafaozhan"
@@ -117,7 +108,10 @@ object Library {
     const val licenseName = "The Apache Software License, Version 2.0"
     const val licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
     const val licenseDistribution = "repo"
-}
 
-val isReleaseBuild: Boolean
-    get() = System.getenv("GPG_KEY") != null
+    val releaseUrl = if (isReleaseBuild) {
+        "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+    } else {
+        "https://oss.sonatype.org/content/repositories/snapshots"
+    }
+}
