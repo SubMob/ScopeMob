@@ -3,14 +3,5 @@
  */
 enableFeaturePreview("GRADLE_METADATA")
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        jcenter()
-        mavenCentral()
-    }
-}
-
-rootProject.name = "scopemob"
+rootProject.name = "ScopeMob"
 include(":scopemob")

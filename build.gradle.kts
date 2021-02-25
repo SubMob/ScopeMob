@@ -76,6 +76,8 @@ allprojects {
                 val publishing = extensions.findByType<PublishingExtension>() ?: return@apply
                 val key = System.getenv("GPG_KEY")?.toString()?.replace("\\n", "\n")
                 val password = System.getenv("GPG_PASSWORD")?.toString()
+
+                @Suppress("UnstableApiUsage")
                 useInMemoryPgpKeys(key, password)
                 sign(publishing.publications)
             }
@@ -92,13 +94,10 @@ val isReleaseBuild: Boolean
 
 object Library {
     const val libraryGroup = "com.github.sub-mob"
-    const val libraryArtifact = "scopemob"
-    const val libraryVersion = "2.0.1"
+    const val libraryVersion = "2.0.2"
 
-    const val publishPlugin = "maven-publish"
-
-    const val libraryUrl = "https://github.com/SUB-MOB/scopemob"
-    const val libraryName = "Scope Mob"
+    const val libraryUrl = "https://github.com/SubMob/ScopeMob"
+    const val libraryName = "ScopeMob"
     const val libraryDescription = "Set of useful scope and higher-order functions"
 
     const val developerName = "Mustafa Ozhan"

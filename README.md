@@ -5,9 +5,9 @@
 ![badge][badge-js]
 ![badge][badge-jvm]
 
-[![master](https://github.com/SUB-MOB/scopemob/actions/workflows/master.yml/badge.svg)](https://github.com/SUB-MOB/scopemob/actions/workflows/master.yml)
+[![master](https://github.com/SubMob/ScopeMob/actions/workflows/master.yml/badge.svg)](https://github.com/SubMob/ScopeMob/actions/workflows/master.yml)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.sub-mob/scopemob/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.sub-mob/scopemob)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/35c32a0221ab44e18400834c35b8f402)](https://www.codacy.com/gh/SUB-MOB/scopemob?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SUB-MOB/scopemob&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/35c32a0221ab44e18400834c35b8f402)](https://www.codacy.com/gh/SubMob/ScopeMob?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SubMob/ScopeMob&amp;utm_campaign=Badge_Grade)
 
 ## Install
 
