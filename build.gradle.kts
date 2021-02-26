@@ -93,8 +93,8 @@ val isReleaseBuild: Boolean
     get() = System.getenv("GPG_KEY") != null
 
 object Library {
-    const val libraryGroup = "com.github.sub-mob"
-    const val libraryVersion = "2.0.2"
+    const val libraryGroup = "com.github.submob"
+    const val libraryVersion = "2.0.0"
 
     const val libraryUrl = "https://github.com/SubMob/ScopeMob"
     const val libraryName = "ScopeMob"
@@ -108,6 +108,6 @@ object Library {
     const val licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
     const val licenseDistribution = "repo"
 
-    const val releaseUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-    const val snapshotUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+    const val releaseUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2"
+    const val snapshotUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots"
 }

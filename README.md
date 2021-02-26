@@ -6,7 +6,7 @@
 ![badge][badge-jvm]
 
 [![master](https://github.com/SubMob/ScopeMob/actions/workflows/master.yml/badge.svg)](https://github.com/SubMob/ScopeMob/actions/workflows/master.yml)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.sub-mob/scopemob/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.sub-mob/scopemob)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.submob/scopemob/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.submob/scopemob)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/35c32a0221ab44e18400834c35b8f402)](https://www.codacy.com/gh/SubMob/ScopeMob?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SubMob/ScopeMob&amp;utm_campaign=Badge_Grade)
 
 ## Install
@@ -24,7 +24,7 @@ Then, simply add the dependency to your common source-set dependencies
 ```groovy
 commonMain {
     dependencies {
-        implementation("com.github.sub-mob:scopemob:LATEST_VERSION")
+        implementation("com.github.submob:scopemob:LATEST_VERSION")
     }
 }
 ```
