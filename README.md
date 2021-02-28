@@ -1,4 +1,4 @@
-# scopemob
+# ScopeMob
 
 ![badge][badge-android]
 ![badge][badge-ios]
@@ -11,7 +11,7 @@
 
 ## Install
 
-Multiplatform Settings is currently published to Maven Central, so add that to repositories.
+ScopeMob is currently published to Maven Central, so add that to repositories.
 
 ```groovy
 repositories {
