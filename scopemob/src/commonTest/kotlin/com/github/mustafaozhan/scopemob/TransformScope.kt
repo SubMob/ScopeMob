@@ -5,6 +5,7 @@ package com.github.mustafaozhan.scopemob
 
 import com.github.mustafaozhan.scopemob.main.MainScopeTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
@@ -40,17 +41,12 @@ class TransformScope : MainScopeTest() {
             ?: run { assertTrue(true, EXPECTED) }
     }
 
-//    @Test
-//    fun extraordinaryMapTo() = subjectFunction
-//        .mapTo { SOME_STRING }
-//        ?.mapTo { it -> it.length }
-//        ?.let { assertEquals(11, it) }
-//        ?: run { fail(UN_EXPECTED) }
-//            .mapTo { subjectFunction?.trueCondition }
-//            ?.whether { it }
-//            ?.mapTo { !it }
-//            ?.let { fail(UN_EXPECTED) }
-//        ?: run { assertTrue(true, EXPECTED) }
+    @Test
+    fun extraordinaryMapTo() = subjectFunction
+        .mapTo { SOME_STRING }
+        ?.mapTo { it -> it.length }
+        ?.let { assertEquals(11, it) }
+        ?: run { fail(UN_EXPECTED) }
 
     @Test
     fun castTo() {
