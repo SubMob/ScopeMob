@@ -3,5 +3,5 @@
  */
 
 object Versions {
-    const val kotlin = "1.4.31"
+    const val kotlin = "1.5.0-M1"
 }
