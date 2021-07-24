@@ -3,7 +3,7 @@
  */
 
 plugins {
-    kotlin(Plugins.multiplatform)
+    kotlin(Plugins.MULTIPLATFORM)
     `maven-publish`
     signing
 }
@@ -34,8 +34,8 @@ kotlin {
         val commonMain by getting
         val commonTest by getting {
             dependencies {
-                implementation(kotlin(Dependencies.Common.test))
-                implementation(kotlin(Dependencies.Common.testAnnotations))
+                implementation(kotlin(Dependencies.Common.TEST))
+                implementation(kotlin(Dependencies.Common.TEST_ANNOTATIONS))
             }
         }
 
@@ -45,14 +45,14 @@ kotlin {
         val jvmMain by getting
         val jvmTest by getting {
             dependencies {
-                implementation(kotlin(Dependencies.JVM.testJUnit))
+                implementation(kotlin(Dependencies.JVM.TEST_J_UNIT))
             }
         }
 
         val jsMain by getting
         val jsTest by getting {
             dependencies {
-                implementation(kotlin(Dependencies.JS.test))
+                implementation(kotlin(Dependencies.JS.TEST))
             }
         }
     }

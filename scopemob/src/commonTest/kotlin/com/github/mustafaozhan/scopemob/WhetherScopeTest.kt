@@ -3,10 +3,10 @@
  */
 package com.github.mustafaozhan.scopemob
 
+import com.github.mustafaozhan.scopemob.extension.failTest
+import com.github.mustafaozhan.scopemob.extension.passTest
 import com.github.mustafaozhan.scopemob.main.MainScopeTest
 import kotlin.test.Test
-import kotlin.test.assertTrue
-import kotlin.test.fail
 
 class WhetherScopeTest : MainScopeTest() {
 
@@ -15,14 +15,14 @@ class WhetherScopeTest : MainScopeTest() {
         subjectFunction
             ?.whether { it.trueCondition }
             ?.whether { trueCondition }
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
 
         // vararg
         subjectFunction
             ?.whether({ it.trueCondition }, { trueCondition })
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
     }
 
     @Test
@@ -30,14 +30,14 @@ class WhetherScopeTest : MainScopeTest() {
         subjectFunction
             ?.whether { it.falseCondition }
             ?.whether { falseCondition }
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
 
         // vararg
         subjectFunction
             ?.whether({ it.falseCondition }, { falseCondition })
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
     }
 
     @Test
@@ -45,14 +45,14 @@ class WhetherScopeTest : MainScopeTest() {
         subjectFunction
             ?.whether { it.trueCondition }
             ?.whether { falseCondition }
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
 
         // vararg
         subjectFunction
             ?.whether({ it.trueCondition }, { falseCondition })
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
     }
 
     @Test
@@ -60,14 +60,14 @@ class WhetherScopeTest : MainScopeTest() {
         subjectFunction
             ?.whetherNot { it.falseCondition }
             ?.whetherNot { falseCondition }
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
 
         // vararg
         subjectFunction
             ?.whetherNot({ it.falseCondition }, { falseCondition })
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
     }
 
     @Test
@@ -75,14 +75,14 @@ class WhetherScopeTest : MainScopeTest() {
         subjectFunction
             ?.whetherNot { it.trueCondition }
             ?.whetherNot { trueCondition }
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
 
         // vararg
         subjectFunction
             ?.whetherNot({ it.trueCondition }, { trueCondition })
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
     }
 
     @Test
@@ -90,13 +90,13 @@ class WhetherScopeTest : MainScopeTest() {
         subjectFunction
             ?.whetherNot { it.falseCondition }
             ?.whetherNot { trueCondition }
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
 
         // vararg
         subjectFunction
             ?.whetherNot({ it.falseCondition }, { trueCondition })
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
     }
 }

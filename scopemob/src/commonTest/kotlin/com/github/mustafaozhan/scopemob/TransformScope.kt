@@ -3,77 +3,76 @@
  */
 package com.github.mustafaozhan.scopemob
 
+import com.github.mustafaozhan.scopemob.extension.failTest
+import com.github.mustafaozhan.scopemob.extension.passTest
 import com.github.mustafaozhan.scopemob.main.MainScopeTest
+import com.github.mustafaozhan.scopemob.model.A
+import com.github.mustafaozhan.scopemob.model.B
+import com.github.mustafaozhan.scopemob.model.C
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
-import kotlin.test.fail
 
 class TransformScope : MainScopeTest() {
-
-    open class A
-    open class B : A()
-    class C : B()
 
     @Test
     fun mapTo() {
         subjectFunction
             ?.mapTo { it.trueCondition }
             ?.whether { it }
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
 
         subjectFunction
             ?.mapTo { it.falseCondition }
             ?.whether { it }
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
         subjectFunction
             ?.mapTo { trueCondition }
             ?.whether { it }
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
 
         subjectFunction
             ?.mapTo { falseCondition }
             ?.whether { it }
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
     }
 
     @Test
     fun extraordinaryMapTo() = subjectFunction
-        .mapTo { SOME_STRING }
+        .mapTo { someString }
         ?.mapTo { it -> it.length }
         ?.let { assertEquals(11, it) }
-        ?: run { fail(UN_EXPECTED) }
+        ?: run { failTest() }
 
     @Test
     fun castTo() {
         B().castTo<A>()
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
 
         A().castTo<B>()
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
     }
 
     @Test
     fun multiCastTo() {
         C().castTo<B>()
             ?.castTo<A>()
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
 
         A().castTo<B>()
             ?.castTo<C>()
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
     }
 
     @Test
     fun extraordinaryCastTo() = C().castTo<A>()
-        ?.let { assertTrue(true, EXPECTED) }
-        ?: run { fail(UN_EXPECTED) }
+        ?.let { passTest() }
+        ?: run { failTest() }
 }

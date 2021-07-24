@@ -3,10 +3,10 @@
  */
 package com.github.mustafaozhan.scopemob
 
+import com.github.mustafaozhan.scopemob.extension.failTest
+import com.github.mustafaozhan.scopemob.extension.passTest
 import com.github.mustafaozhan.scopemob.main.MainScopeTest
 import kotlin.test.Test
-import kotlin.test.assertTrue
-import kotlin.test.fail
 
 class EitherScopeTest : MainScopeTest() {
 
@@ -15,14 +15,14 @@ class EitherScopeTest : MainScopeTest() {
         subjectFunction
             ?.either({ it.trueCondition }, { it.falseCondition })
             ?.either({ trueCondition }, { falseCondition })
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
 
         subjectFunction
             ?.either({ it.falseCondition }, { it.trueCondition })
             ?.either({ falseCondition }, { trueCondition })
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
     }
 
     @Test
@@ -30,14 +30,14 @@ class EitherScopeTest : MainScopeTest() {
         subjectFunction
             ?.either({ it.trueCondition }, { it.falseCondition })
             ?.either({ trueCondition }, { trueCondition })
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
 
         subjectFunction
             ?.either({ it.falseCondition }, { it.trueCondition })
             ?.either({ trueCondition }, { trueCondition })
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
     }
 
     @Test
@@ -45,14 +45,14 @@ class EitherScopeTest : MainScopeTest() {
         subjectFunction
             ?.either({ it.trueCondition }, { it.falseCondition })
             ?.either({ falseCondition }, { falseCondition })
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
 
         subjectFunction
             ?.either({ it.falseCondition }, { it.trueCondition })
             ?.either({ falseCondition }, { falseCondition })
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
     }
 
     @Test
@@ -60,14 +60,14 @@ class EitherScopeTest : MainScopeTest() {
         subjectFunction
             ?.eitherNot({ it.trueCondition }, { it.falseCondition })
             ?.eitherNot({ trueCondition }, { falseCondition })
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
 
         subjectFunction
             ?.eitherNot({ it.falseCondition }, { it.trueCondition })
             ?.eitherNot({ falseCondition }, { trueCondition })
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
     }
 
     @Test
@@ -75,14 +75,14 @@ class EitherScopeTest : MainScopeTest() {
         subjectFunction
             ?.eitherNot({ it.trueCondition }, { it.falseCondition })
             ?.eitherNot({ trueCondition }, { trueCondition })
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
 
         subjectFunction
             ?.eitherNot({ it.falseCondition }, { it.trueCondition })
             ?.eitherNot({ trueCondition }, { trueCondition })
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
     }
 
     @Test
@@ -90,14 +90,14 @@ class EitherScopeTest : MainScopeTest() {
         subjectFunction
             ?.eitherNot({ it.trueCondition }, { it.falseCondition })
             ?.eitherNot({ falseCondition }, { falseCondition })
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
 
         subjectFunction
             ?.eitherNot({ it.falseCondition }, { it.trueCondition })
             ?.eitherNot({ falseCondition }, { falseCondition })
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
     }
 
     @Test
@@ -105,7 +105,7 @@ class EitherScopeTest : MainScopeTest() {
         subjectFunction
             ?.eitherNot({ it.falseCondition }, { it.falseCondition })
             ?.eitherNot({ falseCondition }, { falseCondition })
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.let { passTest() }
+            ?: run { failTest() }
     }
 }

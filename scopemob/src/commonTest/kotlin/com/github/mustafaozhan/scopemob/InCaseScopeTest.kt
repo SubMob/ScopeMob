@@ -3,10 +3,10 @@
  */
 package com.github.mustafaozhan.scopemob
 
+import com.github.mustafaozhan.scopemob.extension.failTest
+import com.github.mustafaozhan.scopemob.extension.passTest
 import com.github.mustafaozhan.scopemob.main.MainScopeTest
 import kotlin.test.Test
-import kotlin.test.assertTrue
-import kotlin.test.fail
 
 class InCaseScopeTest : MainScopeTest() {
 
@@ -14,63 +14,63 @@ class InCaseScopeTest : MainScopeTest() {
     fun inCase() {
         subjectFunction
             ?.inCase(false) {
-                fail(UN_EXPECTED)
+                failTest()
             }
 
         subjectFunction
             ?.whether { trueCondition }
-            ?.inCase(true) { assertTrue(true, EXPECTED) }
-            ?.inCase(false) { fail(UN_EXPECTED) }
-            ?.inCase(true) { assertTrue(true, EXPECTED) }
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.inCase(true) { passTest() }
+            ?.inCase(false) { failTest() }
+            ?.inCase(true) { passTest() }
+            ?.let { passTest() }
+            ?: run { failTest() }
     }
 
     @Test
     fun inCaseNot() {
         subjectFunction
             ?.inCaseNot(true) {
-                fail(UN_EXPECTED)
+                failTest()
             }
 
         subjectFunction
             ?.whether { trueCondition }
-            ?.inCaseNot(false) { assertTrue(true, EXPECTED) }
-            ?.inCaseNot(true) { fail(UN_EXPECTED) }
-            ?.inCaseNot(false) { assertTrue(true, EXPECTED) }
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.inCaseNot(false) { passTest() }
+            ?.inCaseNot(true) { failTest() }
+            ?.inCaseNot(false) { passTest() }
+            ?.let { passTest() }
+            ?: run { failTest() }
     }
 
     @Test
     fun inCaseScope() {
         subjectFunction
             ?.inCase({ falseCondition }) {
-                fail(UN_EXPECTED)
+                failTest()
             }
 
         subjectFunction
             ?.whether { trueCondition }
-            ?.inCase({ trueCondition }) { assertTrue(true, EXPECTED) }
-            ?.inCase({ falseCondition }) { fail(UN_EXPECTED) }
-            ?.inCase({ trueCondition }) { assertTrue(true, EXPECTED) }
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.inCase({ trueCondition }) { passTest() }
+            ?.inCase({ falseCondition }) { failTest() }
+            ?.inCase({ trueCondition }) { passTest() }
+            ?.let { passTest() }
+            ?: run { failTest() }
     }
 
     @Test
     fun inCaseNotScope() {
         subjectFunction
             ?.inCaseNot({ trueCondition }) {
-                fail(UN_EXPECTED)
+                failTest()
             }
 
         subjectFunction
             ?.whether { trueCondition }
-            ?.inCaseNot({ falseCondition }) { assertTrue(true, EXPECTED) }
-            ?.inCaseNot({ trueCondition }) { fail(UN_EXPECTED) }
-            ?.inCaseNot({ falseCondition }) { assertTrue(true, EXPECTED) }
-            ?.let { assertTrue(true, EXPECTED) }
-            ?: run { fail(UN_EXPECTED) }
+            ?.inCaseNot({ falseCondition }) { passTest() }
+            ?.inCaseNot({ trueCondition }) { failTest() }
+            ?.inCaseNot({ falseCondition }) { passTest() }
+            ?.let { passTest() }
+            ?: run { failTest() }
     }
 }

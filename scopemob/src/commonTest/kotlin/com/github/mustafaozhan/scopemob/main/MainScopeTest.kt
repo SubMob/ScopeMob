@@ -3,22 +3,23 @@
  */
 package com.github.mustafaozhan.scopemob.main
 
-import com.github.mustafaozhan.scopemob.*
+import com.github.mustafaozhan.scopemob.either
+import com.github.mustafaozhan.scopemob.extension.failTest
+import com.github.mustafaozhan.scopemob.extension.passTest
+import com.github.mustafaozhan.scopemob.inCase
+import com.github.mustafaozhan.scopemob.inCaseNot
+import com.github.mustafaozhan.scopemob.mapTo
 import com.github.mustafaozhan.scopemob.model.FunctionTestSubject
+import com.github.mustafaozhan.scopemob.notSameAs
+import com.github.mustafaozhan.scopemob.sameAs
+import com.github.mustafaozhan.scopemob.whether
+import com.github.mustafaozhan.scopemob.whetherNot
 import kotlin.test.Test
-import kotlin.test.assertTrue
-import kotlin.test.fail
 
 open class MainScopeTest {
-    companion object {
-        const val UN_EXPECTED = "Unexpected"
-        const val EXPECTED = "Expected"
-
-        @Suppress("MaybeConst")
-        val SOME_STRING: String? = "Some String"
-    }
-
     protected var subjectFunction: FunctionTestSubject? = FunctionTestSubject()
+
+    protected var someString: String? = "Some String"
 
     @Test
     fun isChainBreaks() {
@@ -26,26 +27,26 @@ open class MainScopeTest {
         subjectFunction
             ?.whether { it.trueCondition }
             ?.whetherNot { falseCondition }
-            ?.inCase(true) { assertTrue(true, EXPECTED) }
-            ?.inCaseNot(true) { fail(UN_EXPECTED) }
-            ?.inCase({ trueCondition }) { assertTrue(true, EXPECTED) }
-            ?.inCaseNot({ trueCondition }) { fail(UN_EXPECTED) }
+            ?.inCase(true) { passTest() }
+            ?.inCaseNot(true) { failTest() }
+            ?.inCase({ trueCondition }) { passTest() }
+            ?.inCaseNot({ trueCondition }) { failTest() }
             ?.whetherNot { it.trueCondition } // exit chain
             ?.whether { true }
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
 
         subjectFunction
             ?.whether { it.trueCondition }
             ?.whetherNot { falseCondition }
-            ?.inCase(true) { assertTrue(true, EXPECTED) }
-            ?.inCaseNot(true) { fail(UN_EXPECTED) }
-            ?.inCase({ trueCondition }) { assertTrue(true, EXPECTED) }
-            ?.inCaseNot({ trueCondition }) { fail(UN_EXPECTED) }
+            ?.inCase(true) { passTest() }
+            ?.inCaseNot(true) { failTest() }
+            ?.inCase({ trueCondition }) { passTest() }
+            ?.inCaseNot({ trueCondition }) { failTest() }
             ?.either({ it.falseCondition }, { falseCondition }) // exit chain
             ?.whether { true }
-            ?.let { fail(UN_EXPECTED) }
-            ?: run { assertTrue(true, EXPECTED) }
+            ?.let { failTest() }
+            ?: run { passTest() }
     }
 
     @Test
@@ -54,10 +55,10 @@ open class MainScopeTest {
         subjectFunction
             ?.whether { it.trueCondition }
             ?.either({ it.falseCondition }, { trueCondition })
-            ?.inCase(true) { assertTrue(true, EXPECTED) }
-            ?.inCaseNot(true) { fail(UN_EXPECTED) }
-            ?.inCase({ trueCondition }) { assertTrue(true, EXPECTED) }
-            ?.inCaseNot({ trueCondition }) { fail(UN_EXPECTED) }
+            ?.inCase(true) { passTest() }
+            ?.inCaseNot(true) { failTest() }
+            ?.inCase({ trueCondition }) { passTest() }
+            ?.inCaseNot({ trueCondition }) { failTest() }
             ?.whetherNot { falseCondition }
             ?.mapTo { it.trueCondition }
             ?.sameAs { true }
@@ -65,24 +66,24 @@ open class MainScopeTest {
             .whether { true }
             .let {
                 if (it == null) {
-                    assertTrue(true, EXPECTED)
+                    passTest()
                 } else {
-                    fail(UN_EXPECTED)
+                    failTest()
                 }
             }
         subjectFunction = null
         subjectFunction
             ?.whether { it.trueCondition }
             ?.either({ it.falseCondition }, { trueCondition })
-            ?.inCase(true) { assertTrue(true, EXPECTED) }
-            ?.inCaseNot(true) { fail(UN_EXPECTED) }
-            ?.inCase({ trueCondition }) { assertTrue(true, EXPECTED) }
-            ?.inCaseNot({ trueCondition }) { fail(UN_EXPECTED) }
+            ?.inCase(true) { passTest() }
+            ?.inCaseNot(true) { failTest() }
+            ?.inCase({ trueCondition }) { passTest() }
+            ?.inCaseNot({ trueCondition }) { failTest() }
             ?.whetherNot { falseCondition }
             ?.mapTo { it.trueCondition }
             ?.sameAs { true }
             ?.notSameAs { false }
             .whether { true }
-            ?.let { fail(UN_EXPECTED) }
+            ?.let { failTest() }
     }
 }

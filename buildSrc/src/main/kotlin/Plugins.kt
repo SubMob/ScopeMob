@@ -3,5 +3,5 @@
  */
 
 object Plugins {
-    const val multiplatform = "multiplatform"
+    const val MULTIPLATFORM = "multiplatform"
 }

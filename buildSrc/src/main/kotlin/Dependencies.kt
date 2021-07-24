@@ -4,15 +4,15 @@
 
 object Dependencies {
     object Common {
-        const val test = "test-common"
-        const val testAnnotations = "test-annotations-common"
+        const val TEST = "test-common"
+        const val TEST_ANNOTATIONS = "test-annotations-common"
     }
 
     object JVM {
-        const val testJUnit = "test-junit"
+        const val TEST_J_UNIT = "test-junit"
     }
 
     object JS {
-        const val test = "test-js"
+        const val TEST = "test-js"
     }
 }

@@ -5,26 +5,24 @@ package com.github.mustafaozhan.scopemob
 
 inline fun <reified T> T.either(
     vararg method: T.(condition: T) -> Boolean
-): T? =
-    if (this != null) {
-        if (method.any { it(this) }) {
-            this
-        } else {
-            null
-        }
+): T? = if (this != null) {
+    if (method.any { it(this) }) {
+        this
     } else {
         null
     }
+} else {
+    null
+}
 
 inline fun <reified T> T.eitherNot(
     vararg method: T.(condition: T) -> Boolean
-): T? =
-    if (this != null) {
-        if (!method.any { it(this) }) {
-            this
-        } else {
-            null
-        }
+): T? = if (this != null) {
+    if (!method.any { it(this) }) {
+        this
     } else {
         null
     }
+} else {
+    null
+}

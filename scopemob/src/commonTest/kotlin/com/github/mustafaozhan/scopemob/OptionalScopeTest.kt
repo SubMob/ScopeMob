@@ -3,13 +3,18 @@
  */
 package com.github.mustafaozhan.scopemob
 
+import com.github.mustafaozhan.scopemob.extension.failTest
+import com.github.mustafaozhan.scopemob.extension.passTest
 import com.github.mustafaozhan.scopemob.main.MainScopeTest
-import kotlin.test.*
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
 
 class OptionalScopeTest : MainScopeTest() {
 
     private var nullString: String? = null
-    private var notNullString: String? = SOME_STRING
+    private var notNullString: String? = ""
 
     @Test
     fun ensure() {
@@ -17,9 +22,9 @@ class OptionalScopeTest : MainScopeTest() {
             subjectFunction?.falseCondition,
             subjectFunction?.trueCondition
         ) {
-            assertTrue(true, EXPECTED)
+            passTest()
         } ?: run {
-            fail(UN_EXPECTED)
+            failTest()
         }
 
         ensure(
@@ -27,28 +32,28 @@ class OptionalScopeTest : MainScopeTest() {
             subjectFunction?.trueCondition,
             subjectFunction?.nullAbleCondition
         ) {
-            fail(UN_EXPECTED)
+            failTest()
         } ?: run {
-            assertTrue(true, EXPECTED)
+            passTest()
         }
     }
 
     @Test
     fun justInCase() {
         nullString.justInCase {
-            nullString = SOME_STRING
+            nullString = someString
         }.apply {
             assertNotNull(nullString)
-            assertEquals(SOME_STRING, nullString)
+            assertEquals(someString, nullString)
         }
 
         resetString()
 
         nullString.justInCase {
-            nullString = SOME_STRING
+            nullString = someString
         }.let {
             assertNotNull(nullString)
-            assertEquals(SOME_STRING, nullString)
+            assertEquals(someString, nullString)
         }
 
         resetString()
@@ -62,14 +67,14 @@ class OptionalScopeTest : MainScopeTest() {
         resetString()
 
         notNullString.justInCase {
-            fail(UN_EXPECTED)
+            failTest()
         }.let {
-            assertEquals(SOME_STRING, notNullString)
+            assertEquals(someString, notNullString)
         }
     }
 
     private fun resetString() {
         nullString = null
-        notNullString = SOME_STRING
+        notNullString = someString
     }
 }
