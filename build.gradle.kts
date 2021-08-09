@@ -21,7 +21,7 @@ allprojects {
     with(Library) {
 
         group = GROUP
-        version = VERSION
+        version = ProjectSettings.getVersionName(project)
 
         repositories {
             google()
@@ -93,7 +93,6 @@ val isReleaseBuild: Boolean
 
 object Library {
     const val GROUP = "com.github.submob"
-    const val VERSION = "2.0.3"
     const val URL = "https://github.com/SubMob/ScopeMob"
     const val NAME = "ScopeMob"
     const val DESCRIPTION = "Set of useful scope and higher-order functions"
