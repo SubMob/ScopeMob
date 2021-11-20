@@ -15,4 +15,13 @@ object Dependencies {
     object JS {
         const val TEST = "test-js"
     }
+
+    object ClassPaths {
+        const val KOTLIN_GRADLE_PLUGIN =
+            "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
+    }
+
+    object Plugins {
+        const val MULTIPLATFORM = "multiplatform"
+    }
 }

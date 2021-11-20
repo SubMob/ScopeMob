@@ -3,7 +3,7 @@
  */
 
 plugins {
-    kotlin(Plugins.MULTIPLATFORM)
+    kotlin(Dependencies.Plugins.MULTIPLATFORM)
     `maven-publish`
     signing
 }
