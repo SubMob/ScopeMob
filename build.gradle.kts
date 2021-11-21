@@ -12,7 +12,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath(ClassPaths.KOTLIN_GRADLE_PLUGIN)
+        classpath(Dependencies.ClassPaths.KOTLIN_GRADLE_PLUGIN)
     }
 }
 
