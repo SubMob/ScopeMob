@@ -8,7 +8,8 @@
 [![ScopeMob CI](https://github.com/SubMob/ScopeMob/actions/workflows/main.yml/badge.svg)](https://github.com/SubMob/ScopeMob/actions/workflows/main.yml)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.submob/scopemob/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.submob/scopemob)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/35c32a0221ab44e18400834c35b8f402)](https://www.codacy.com/gh/SubMob/ScopeMob?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SubMob/ScopeMob&amp;utm_campaign=Badge_Grade)
-
+[![Codacy Coverage](https://app.codacy.com/project/badge/Coverage/35c32a0221ab44e18400834c35b8f402)](https://www.codacy.com/gh/SubMob/ScopeMob/dashboard?utm_source=github.com&utm_medium=referral&utm_content=SubMob/ScopeMob&utm_campaign=Badge_Coverage)
+[![Codecov Badge](https://codecov.io/gh/SubMob/ScopeMob/branch/master/graph/badge.svg?token=MPEA1FBVT3)](https://codecov.io/gh/SubMob/ScopeMob)
 ## Install
 
 ScopeMob is currently published to Maven Central, so add that to repositories.
