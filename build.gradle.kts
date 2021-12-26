@@ -4,7 +4,7 @@
 
 plugins {
     `maven-publish`
-    id(KOVER) version Versions.KOVER
+    id(Dependencies.Plugins.KOVER) version Versions.KOVER
 }
 
 buildscript {
@@ -13,8 +13,10 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath(Dependencies.ClassPaths.KOTLIN_GRADLE_PLUGIN)
-        classpath(KOVER)
+        with(Dependencies.ClassPaths) {
+            classpath(KOTLIN_GRADLE_PLUGIN)
+            classpath(KOVER)
+        }
     }
 }
 
