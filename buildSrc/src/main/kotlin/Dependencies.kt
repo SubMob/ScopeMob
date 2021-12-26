@@ -19,9 +19,11 @@ object Dependencies {
     object ClassPaths {
         const val KOTLIN_GRADLE_PLUGIN =
             "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
+        const val KOVER = "org.jetbrains.kotlinx:kover:${Versions.KOVER}"
     }
 
     object Plugins {
         const val MULTIPLATFORM = "multiplatform"
+        const val KOVER = "org.jetbrains.kotlinx.kover"
     }
 }
