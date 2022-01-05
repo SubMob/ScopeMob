@@ -30,14 +30,37 @@ commonMain {
 }
 ```
 
+## Documentation
+
+<details>
+<summary>either/eitherNot</summary>
+<br>
+
+`either` and `eitherNot` takes all the lambda parameters and applies `or`/`||` operator. `either` returns the caller object to `let` if the result is `true` otherwise it returns `false` so `?:run` blocks run.
+
+`eitherNot` does the same but when the result is `false`.
+
+```kotlin
+SomeObject
+    ?.either( // `it` is SomeObject
+        { it.someBoolean },
+        { this.someBoolean }, // or simply someBoolean
+        { someOtherBoolean }
+    )?.let {
+        // runs if all the conditions are true
+    } ?: run {
+    // runs if 
+}
+```
+
+</details>
+
 ### License
 
 ```markdown
 Copyright 2020 Mustafa Ozhan
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
     http://www.apache.org/licenses/LICENSE-2.0
 
