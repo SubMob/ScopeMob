@@ -91,6 +91,37 @@ SomeObject
 </details>
 
 <details>
+<summary>inCase/inCaseNot</summary>
+<br>
+
+`inCase` and `inCaseNot` takes a condition as parameter and if it is true runs the lambda block. It returns the caller object no matter the condition.
+
+`inCaseNot` does the same but when the condition is `false`.
+
+```kotlin
+SomeObject
+    ?.inCase(someCondition) { /* this will run only someCondition true */ } // you can also reach SomeObject inside the scope with `it` or `this`
+    ?.let {
+        // runs if the original SomeObject is not null
+    } ?: run {
+    // runs if the original SomeObject is null
+}
+
+// popular example from Android world
+AlertDialog
+    .Builder(activity, R.style.AlertDialogCustom)
+    .setIcon(R.mipmap.ic_launcher)
+    .setTitle(title)
+    .setMessage(description)
+    .setPositiveButton(positiveButton) { _, _ -> function() }
+    .setCancelable(cancelable)
+    .inCase(cancelable) { setNegativeButton(activity.getString(R.string.cancel), null) } // this will run only cancelable is true
+    .show()
+```
+
+</details>
+
+<details>
 <summary>ensure</summary>
 <br>
 
