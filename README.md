@@ -42,14 +42,28 @@ commonMain {
 
 ```kotlin
 SomeObject
-    ?.either( // `it` is SomeObject
-        { it.someBoolean },
-        { this.someBoolean }, // or simply someBoolean
+    ?.either(
+        { it.someBoolean }, // `it` is SomeObject
+        { this.someBoolean }, // `this` is some object, you can also use simply someBoolean
         { someOtherBoolean }
     )?.let {
         // runs if all the conditions are true
     } ?: run {
     // runs if 
+}
+```
+
+</details>
+
+<details>
+<summary>ensure</summary>
+<br>
+
+`ensure` takes many variables as argument and let the block work only if all the variables are not null.
+
+```kotlin
+ensure(variable1, variable2, variable3, ...) {
+    // The block run only if all the variables are not null
 }
 ```
 
