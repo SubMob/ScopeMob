@@ -21,19 +21,19 @@ jobs:
           java-version: 11
 
       - name: Gradle Build
-        run: ./gradlew build --parallel
+        run: ./gradlew build koverMergedXmlReport --parallel
 
       - name: Upload to Codecov
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: scopemob/build/reports/kover/report.xml
+          files: build/reports/kover/report.xml
 
       - name: Upload to Codacy
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: scopemob/build/reports/kover/report.xml
+          coverage-reports: build/reports/kover/report.xml
 
 
       - name: Notify slack success
