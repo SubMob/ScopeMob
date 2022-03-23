@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
-package com.github.mustafaozhan.scopemob
+package com.github.submob.scopemob
 
 inline fun <reified T> T.whether(
     method: T.(condition: T) -> Boolean

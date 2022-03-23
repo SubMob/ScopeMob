@@ -1,14 +1,14 @@
 /*
  Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
-package com.github.mustafaozhan.scopemob
+package com.github.submob.scopemob
 
-import com.github.mustafaozhan.scopemob.extension.failTest
-import com.github.mustafaozhan.scopemob.extension.passTest
-import com.github.mustafaozhan.scopemob.main.MainScopeTest
-import com.github.mustafaozhan.scopemob.model.A
-import com.github.mustafaozhan.scopemob.model.B
-import com.github.mustafaozhan.scopemob.model.C
+import com.github.submob.scopemob.extension.failTest
+import com.github.submob.scopemob.extension.passTest
+import com.github.submob.scopemob.main.MainScopeTest
+import com.github.submob.scopemob.model.A
+import com.github.submob.scopemob.model.B
+import com.github.submob.scopemob.model.C
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
