@@ -19,14 +19,7 @@ kotlin {
         iosX64("ios")
     }
 
-    js {
-        browser {
-            binaries.executable()
-            testTask {
-                enabled = false
-            }
-        }
-    }
+    js()
 
     @Suppress("UNUSED_VARIABLE")
     sourceSets {
@@ -43,17 +36,9 @@ kotlin {
         val iosTest by getting
 
         val jvmMain by getting
-        val jvmTest by getting {
-            dependencies {
-                implementation(kotlin(Dependencies.JVM.TEST_J_UNIT))
-            }
-        }
+        val jvmTest by getting
 
         val jsMain by getting
-        val jsTest by getting {
-            dependencies {
-                implementation(kotlin(Dependencies.JS.TEST))
-            }
-        }
+        val jsTest by getting
     }
 }

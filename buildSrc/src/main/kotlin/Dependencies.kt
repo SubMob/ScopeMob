@@ -4,24 +4,18 @@
 
 object Dependencies {
     object Common {
-        const val TEST = "test-common"
+        const val TEST = "test"
         const val TEST_ANNOTATIONS = "test-annotations-common"
-    }
-
-    object JVM {
-        const val TEST_J_UNIT = "test-junit"
-    }
-
-    object JS {
-        const val TEST = "test-js"
     }
 
     object ClassPaths {
         const val KOTLIN_GRADLE_PLUGIN =
             "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
+        const val KOVER = "org.jetbrains.kotlinx:kover:${Versions.KOVER}"
     }
 
     object Plugins {
         const val MULTIPLATFORM = "multiplatform"
+        const val KOVER = "org.jetbrains.kotlinx.kover"
     }
 }

@@ -1,4 +1,4 @@
-package com.github.mustafaozhan.scopemob.model
+package com.github.submob.scopemob.model
 
 open class A
 open class B : A()

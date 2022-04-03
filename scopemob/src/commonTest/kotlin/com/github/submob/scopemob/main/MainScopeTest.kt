@@ -1,19 +1,19 @@
 /*
  Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
-package com.github.mustafaozhan.scopemob.main
+package com.github.submob.scopemob.main
 
-import com.github.mustafaozhan.scopemob.either
-import com.github.mustafaozhan.scopemob.extension.failTest
-import com.github.mustafaozhan.scopemob.extension.passTest
-import com.github.mustafaozhan.scopemob.inCase
-import com.github.mustafaozhan.scopemob.inCaseNot
-import com.github.mustafaozhan.scopemob.mapTo
-import com.github.mustafaozhan.scopemob.model.FunctionTestSubject
-import com.github.mustafaozhan.scopemob.notSameAs
-import com.github.mustafaozhan.scopemob.sameAs
-import com.github.mustafaozhan.scopemob.whether
-import com.github.mustafaozhan.scopemob.whetherNot
+import com.github.submob.scopemob.either
+import com.github.submob.scopemob.extension.failTest
+import com.github.submob.scopemob.extension.passTest
+import com.github.submob.scopemob.inCase
+import com.github.submob.scopemob.inCaseNot
+import com.github.submob.scopemob.mapTo
+import com.github.submob.scopemob.model.FunctionTestSubject
+import com.github.submob.scopemob.notSameAs
+import com.github.submob.scopemob.sameAs
+import com.github.submob.scopemob.whether
+import com.github.submob.scopemob.whetherNot
 import kotlin.test.Test
 
 open class MainScopeTest {

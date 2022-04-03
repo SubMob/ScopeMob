@@ -8,6 +8,8 @@
 [![ScopeMob CI](https://github.com/SubMob/ScopeMob/actions/workflows/main.yml/badge.svg)](https://github.com/SubMob/ScopeMob/actions/workflows/main.yml)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.submob/scopemob/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.submob/scopemob)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/35c32a0221ab44e18400834c35b8f402)](https://www.codacy.com/gh/SubMob/ScopeMob?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SubMob/ScopeMob&amp;utm_campaign=Badge_Grade)
+[![Codacy Coverage](https://app.codacy.com/project/badge/Coverage/35c32a0221ab44e18400834c35b8f402)](https://www.codacy.com/gh/SubMob/ScopeMob/dashboard?utm_source=github.com&utm_medium=referral&utm_content=SubMob/ScopeMob&utm_campaign=Badge_Coverage)
+[![Codecov Badge](https://codecov.io/gh/SubMob/ScopeMob/branch/develop/graph/badge.svg?token=MPEA1FBVT3)](https://codecov.io/gh/SubMob/ScopeMob)
 
 ## Install
 
@@ -29,14 +31,116 @@ commonMain {
 }
 ```
 
+## Documentation
+
+<details>
+<summary>whether/whetherNot</summary>
+<br>
+
+`whether` and `whetherNot` takes all the lambda parameters and applies `and`/`&&` operator. `whether` returns the caller object to `let` if the result is `true` otherwise it returns `false` so `?:run` blocks will run.
+
+`whetherNot` does the same but when the result is `false`.
+
+```kotlin
+SomeObject
+    ?.whether(
+        { it.someBoolean }, // `it` is SomeObject
+        { this.someBoolean }, // `this` is some object, you can also use simply someBoolean
+        { someOtherBoolean }
+    )?.let {
+        // runs if all the conditions are true
+    } ?: run {
+    // runs if 
+}
+
+// Syntax with one argument
+SomeObject
+    ?.whether { it.someBoolean } // `it` is SomeObject
+    ?.whether { this.someBoolean } // `this` is some object, you can also use simply someBoolean
+    ?.whether { someOtherBoolean }
+    ?.let {
+        // runs if all the conditions are true
+    } ?: run {
+    // runs if 
+}
+```
+
+</details>
+
+<details>
+<summary>either/eitherNot</summary>
+<br>
+
+`either` and `eitherNot` takes all the lambda parameters and applies `or`/`||` operator. `either` returns the caller object to `let` if the result is `true` otherwise it returns `false` so `?:run` blocks will run.
+
+`eitherNot` does the same but when the result is `false`.
+
+```kotlin
+SomeObject
+    ?.either(
+        { it.someBoolean }, // `it` is SomeObject
+        { this.someBoolean }, // `this` is some object, you can also use simply someBoolean
+        { someOtherBoolean }
+    )?.let {
+        // runs if all the conditions are true
+    } ?: run {
+    // runs if 
+}
+```
+
+</details>
+
+<details>
+<summary>inCase/inCaseNot</summary>
+<br>
+
+`inCase` and `inCaseNot` takes a condition as parameter and if it is true runs the lambda block. It returns the caller object no matter the condition.
+
+`inCaseNot` does the same but when the condition is `false`.
+
+```kotlin
+SomeObject
+    ?.inCase(someCondition) { /* this will run only someCondition true */ } // you can also reach SomeObject inside the scope with `it` or `this`
+    ?.let {
+        // runs if the original SomeObject is not null
+    } ?: run {
+    // runs if the original SomeObject is null
+}
+
+// popular example from Android world
+AlertDialog
+    .Builder(activity, R.style.AlertDialogCustom)
+    .setIcon(R.mipmap.ic_launcher)
+    .setTitle(title)
+    .setMessage(description)
+    .setPositiveButton(positiveButton) { _, _ -> function() }
+    .setCancelable(cancelable)
+    .inCase(cancelable) { setNegativeButton(activity.getString(R.string.cancel), null) } // this will run only cancelable is true
+    .show()
+```
+
+</details>
+
+<details>
+<summary>ensure</summary>
+<br>
+
+`ensure` takes many variables as argument and let the block work only if all the variables are not null.
+
+```kotlin
+ensure(variable1, variable2, variable3, ...) {
+    // The block run only if all the variables are not null
+}
+```
+
+</details>
+
 ### License
 
-```markdown
+```text
 Copyright 2020 Mustafa Ozhan
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
     http://www.apache.org/licenses/LICENSE-2.0
 

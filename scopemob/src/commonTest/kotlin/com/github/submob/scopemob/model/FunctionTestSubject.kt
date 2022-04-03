@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
-package com.github.mustafaozhan.scopemob.model
+package com.github.submob.scopemob.model
 
 class FunctionTestSubject {
     var trueCondition = true
