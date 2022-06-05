@@ -1,0 +1,62 @@
+name: Dependency
+
+on:
+  schedule:
+    - cron: "0 7 * * 6"
+
+jobs:
+
+  DependencyCheck:
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.status.outputs.status }}
+    steps:
+
+      - name: Clone Repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Run dependencyUpdates Task
+        run: ./gradlew dependencyUpdates --parallel
+
+      - name: Upload dependencies report
+        uses: actions/upload-artifact@v2
+        with:
+          name: report.txt
+          path: build/dependencyUpdates/report.txt
+
+      - name: Set Job Status
+        id: status
+        run: echo "::set-output name=status::success"
+
+  Notify:
+    runs-on: ubuntu-latest
+    needs: DependencyCheck
+    if: always()
+    steps:
+
+      - name: Notify slack success
+        if: needs.DependencyCheck.outputs.status == 'success'
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: ccc
+          status: SUCCESS
+          color: good
+
+      - name: Notify slack fail
+        if: false == (needs.DependencyCheck.outputs.status == 'success')
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: ccc
+          status: FAILED
+          color: danger
