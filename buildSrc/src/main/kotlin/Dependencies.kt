@@ -17,5 +17,7 @@ object Dependencies {
     object Plugins {
         const val MULTIPLATFORM = "multiplatform"
         const val KOVER = "org.jetbrains.kotlinx.kover"
+        const val DEPENDENCY_UPDATES = "com.github.ben-manes.versions"
+        const val BUILD_HEALTH = "com.autonomousapps.dependency-analysis"
     }
 }
