@@ -29,6 +29,8 @@ buildscript {
 
 allprojects {
 
+    apply(plugin = "kover")
+
     with(Library) {
 
         group = GROUP
@@ -97,6 +99,10 @@ allprojects {
             }
         }
     }
+}
+
+koverMerged {
+    enable()
 }
 
 val isReleaseBuild: Boolean
