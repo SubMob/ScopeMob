@@ -104,8 +104,8 @@ class WhetherScopeTest : MainScopeTest() {
     @Test
     fun null_returns_null() {
         assertNull(null?.whether({ true }, { true }))
-        assertNull(null?.whetherNot({ true }, { true }))
+        assertNull(null?.whetherNot({ false }, { false }))
         assertNull(null?.whether { true })
-        assertNull(null?.whetherNot { true })
+        assertNull(null?.whetherNot { false })
     }
 }

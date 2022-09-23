@@ -113,6 +113,6 @@ class EitherScopeTest : MainScopeTest() {
     @Test
     fun null_returns_null() {
         assertNull(null?.either({ true }, { true }))
-        assertNull(null?.eitherNot({ true }, { true }))
+        assertNull(null?.eitherNot({ false }, { false }))
     }
 }
