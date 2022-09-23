@@ -7,6 +7,7 @@ import com.github.submob.scopemob.extension.failTest
 import com.github.submob.scopemob.extension.passTest
 import com.github.submob.scopemob.main.MainScopeTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertNull
 
 class EitherScopeTest : MainScopeTest() {
@@ -114,5 +115,17 @@ class EitherScopeTest : MainScopeTest() {
     fun null_returns_null() {
         assertNull(null?.either({ true }, { true }))
         assertNull(null?.eitherNot({ false }, { false }))
+    }
+
+    @Test
+    fun null_with_expected_boolean_returns_null() {
+        assertNull(null?.either({ true }, { true }))
+        assertNull(null?.eitherNot({ false }, { false }))
+    }
+
+    @Test
+    fun non_null_with_expected_boolean_returns_null() {
+        assertEquals(subjectFunction, subjectFunction?.either({ true }, { true }))
+        assertEquals(subjectFunction, subjectFunction?.eitherNot({ false }, { false }))
     }
 }
