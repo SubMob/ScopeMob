@@ -10,7 +10,6 @@ plugins {
     with(Dependencies.Plugins) {
         id(KOVER) version Versions.KOVER
         id(DEPENDENCY_UPDATES) version Versions.DEPENDENCY_UPDATES
-        id(BUILD_HEALTH) version Versions.BUILD_HEALTH
     }
 }
 
