@@ -7,9 +7,9 @@ import java.util.Properties
 
 plugins {
     `maven-publish`
-    with(Dependencies.Plugins) {
-        id(KOVER) version Versions.KOVER
-        id(DEPENDENCY_UPDATES) version Versions.DEPENDENCY_UPDATES
+    with(libs.plugins) {
+        alias(dependencyUpdates)
+        alias(kover)
     }
 }
 
@@ -19,9 +19,9 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        with(Dependencies.ClassPaths) {
-            classpath(KOTLIN_GRADLE_PLUGIN)
-            classpath(KOVER)
+        with(libs.classpaths) {
+            classpath(kotlinGradlePlugin)
+            classpath(kover)
         }
     }
 }

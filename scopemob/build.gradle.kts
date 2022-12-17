@@ -3,7 +3,7 @@
  */
 
 plugins {
-    kotlin(Dependencies.Plugins.MULTIPLATFORM)
+    id(libs.plugins.multiplatform.get().pluginId)
     `maven-publish`
     signing
 }
@@ -24,8 +24,10 @@ kotlin {
         val commonMain by getting
         val commonTest by getting {
             dependencies {
-                implementation(kotlin(Dependencies.Common.TEST))
-                implementation(kotlin(Dependencies.Common.TEST_ANNOTATIONS))
+                with(libs.common) {
+                    implementation(test)
+                    implementation(testAnnotations)
+                }
             }
         }
 
