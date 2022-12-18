@@ -1,0 +1,40 @@
+name: Project Automations
+on:
+  issues:
+    types:
+      - opened
+      - reopened
+      - closed
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+      - reopened
+      - review_requested
+      - closed
+      - converted_to_draft
+jobs:
+  ProjectAutomations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Move PR to "📖 To do"'
+        if: (github.event_name == 'pull_request' || github.event_name == 'issues') &&
+          (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready_for_review' || github.event_name == 'pull_request' && github.event.action == 'converted_to_draft')
+        uses: leonsteinhaeuser/project-beta-automations@v1.2.1
+        with:
+          gh_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          organization: SubMob
+          project_id: 1
+          resource_node_id: ${{ github.event.pull_request.node_id }}
+          status_value: "📖 To do"
+
+      - name: 'Move PR to "✅ Done"'
+        if: (github.event_name == 'pull_request' || github.event_name == 'issues') &&
+          github.event.action == 'closed'
+        uses: leonsteinhaeuser/project-beta-automations@v1.2.1
+        with:
+          gh_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          organization: SubMob
+          project_id: 1
+          resource_node_id: ${{ github.event.pull_request.node_id }}
+          status_value: "✅ Done"
