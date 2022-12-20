@@ -39,17 +39,6 @@ jobs:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           coverage-reports: build/reports/kover/merged/xml/report.xml
 
-
-      - name: Notify slack success
-        if: success()
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          channel: submob
-          status: SUCCESS
-          color: good
-
       - name: Notify slack fail
         if: failure()
         env:
