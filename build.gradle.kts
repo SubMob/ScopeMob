@@ -7,6 +7,7 @@ import java.util.Properties
 
 plugins {
     `maven-publish`
+    @Suppress("DSL_SCOPE_VIOLATION")
     with(libs.plugins) {
         alias(dependencyUpdates)
         alias(kover)
