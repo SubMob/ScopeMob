@@ -43,7 +43,7 @@ class TransformScope : MainScopeTest() {
     @Test
     fun extraordinaryMapTo() = subjectFunction
         .mapTo { someString }
-        ?.mapTo { it -> it.length }
+        ?.mapTo { it.length }
         ?.let { assertEquals(11, it) }
         ?: run { failTest() }
 
