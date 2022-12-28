@@ -1,6 +1,8 @@
 /*
  Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
+@file:Suppress("Filename")
+
 package com.github.submob.scopemob
 
 inline fun <reified T> T.inCase(

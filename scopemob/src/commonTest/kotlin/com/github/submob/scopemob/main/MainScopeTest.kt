@@ -23,7 +23,6 @@ open class MainScopeTest {
 
     @Test
     fun isChainBreaks() {
-
         subjectFunction
             ?.whether { it.trueCondition }
             ?.whetherNot { falseCondition }
