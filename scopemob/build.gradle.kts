@@ -25,7 +25,7 @@ kotlin {
         val commonMain by getting
         val commonTest by getting {
             dependencies {
-                with(libs.common) {
+                libs.common.apply {
                     implementation(test)
                     implementation(testAnnotations)
                 }

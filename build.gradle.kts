@@ -8,7 +8,7 @@ import java.util.Properties
 plugins {
     `maven-publish`
     @Suppress("DSL_SCOPE_VIOLATION")
-    with(libs.plugins) {
+    libs.plugins.apply {
         alias(dependencyUpdates)
         alias(kover)
     }
@@ -20,7 +20,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        with(libs.classpaths) {
+        libs.classpaths.apply {
             classpath(kotlinGradlePlugin)
             classpath(kover)
         }
@@ -31,7 +31,7 @@ allprojects {
 
     apply(plugin = "kover")
 
-    with(Library) {
+    Library.apply {
 
         group = GROUP
         version = ProjectSettings.getVersionName(project)
