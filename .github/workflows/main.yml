@@ -22,11 +22,10 @@ jobs:
           java-version: 11
           distribution: 'temurin'
 
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-
       - name: Gradle Build
-        run: ./gradlew build koverMergedXmlReport --parallel
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build koverMergedXmlReport --parallel
 
       - name: Upload to Codecov
         uses: codecov/codecov-action@v3
