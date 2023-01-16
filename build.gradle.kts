@@ -1,7 +1,6 @@
 /*
  * Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import java.io.IOException
 import java.util.Properties
 
@@ -9,7 +8,6 @@ plugins {
     `maven-publish`
     @Suppress("DSL_SCOPE_VIOLATION")
     libs.plugins.apply {
-        alias(dependencyUpdates)
         alias(kover)
     }
 }
@@ -139,23 +137,4 @@ object Library {
     const val LICENSE_DISTRIBUTION = "repo"
     const val RELEASE_URL = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2"
     const val SNAPSHOT_URL = "https://s01.oss.sonatype.org/content/repositories/snapshots"
-}
-
-tasks.withType<DependencyUpdatesTask> {
-    gradleReleaseChannel = "current"
-    rejectVersionIf { candidate.version.isNonStable() }
-}
-
-fun String.isNonStable(): Boolean {
-    val stableKeyword = listOf(
-        "RELEASE",
-        "FINAL",
-        "GA"
-    ).any {
-        this.toUpperCase(java.util.Locale.ROOT).contains(it)
-    }
-
-    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-    val isStable = stableKeyword || regex.matches(this)
-    return isStable.not()
 }
