@@ -97,6 +97,12 @@ allprojects {
             }
         }
     }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            allWarningsAsErrors = true
+        }
+    }
 }
 
 koverMerged {
