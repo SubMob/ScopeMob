@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2020 Mustafa Ozhan. All rights reserved.
  */
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.IOException
 import java.util.Properties
 
