@@ -7,10 +7,7 @@ import java.util.Properties
 
 plugins {
     `maven-publish`
-    @Suppress("DSL_SCOPE_VIOLATION")
-    libs.plugins.apply {
-        alias(kover)
-    }
+    alias(libs.plugins.kover)
 }
 
 buildscript {
