@@ -28,13 +28,13 @@ jobs:
           arguments: build koverMergedXmlReport --parallel
 
       - name: Upload to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@3.1.4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: build/reports/kover/merged/xml/report.xml
 
       - name: Upload to Codacy
-        uses: codacy/codacy-coverage-reporter-action@v1
+        uses: codacy/codacy-coverage-reporter-action@v1.3.0
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           coverage-reports: build/reports/kover/merged/xml/report.xml
@@ -43,7 +43,7 @@ jobs:
         if: failure()
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v2
+        uses: voxmedia/github-action-slack-notify-build@v1.6.0
         with:
           channel: submob
           status: FAILED
