@@ -20,7 +20,7 @@ jobs:
       - name: 'Move to "📖 To do"'
         if: (github.event_name == 'pull_request' || github.event_name == 'issues') &&
           (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'ready_for_review' || github.event_name == 'pull_request' && github.event.action == 'converted_to_draft')
-        uses: leonsteinhaeuser/project-beta-automations@v2.1.0
+        uses: leonsteinhaeuser/project-beta-automations@v2.2.1
         with:
           gh_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           organization: SubMob
@@ -31,7 +31,7 @@ jobs:
       - name: 'Move to "✅ Done"'
         if: (github.event_name == 'pull_request' || github.event_name == 'issues') &&
           github.event.action == 'closed'
-        uses: leonsteinhaeuser/project-beta-automations@v2.1.0
+        uses: leonsteinhaeuser/project-beta-automations@v2.2.1
         with:
           gh_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           organization: SubMob
