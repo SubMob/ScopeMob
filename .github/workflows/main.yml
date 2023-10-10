@@ -25,13 +25,13 @@ jobs:
       - name: Gradle Build
         uses: gradle/gradle-build-action@v2.9.0
         with:
-          arguments: build koverMergedXmlReport --parallel
+          arguments: build koverXmlReport --parallel
 
       - name: Upload to Codecov
         uses: codecov/codecov-action@v3.1.4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: build/reports/kover/merged/xml/report.xml
+          files: build/reports/kover/report.xml
 
       - name: Upload to Codacy
         uses: codacy/codacy-coverage-reporter-action@v1.3.0

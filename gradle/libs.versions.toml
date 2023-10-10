@@ -1,7 +1,7 @@
 [versions]
 
 kotlin = "1.9.10"
-kover = "0.6.1"
+kover = "0.7.4"
 
 [libraries]
 # COMMON
@@ -10,7 +10,7 @@ common-testAnnotations = { module = "org.jetbrains.kotlin:kotlin-test-annotation
 
 # CLASSPATHS
 classpaths-kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-classpaths-kover = { module = "org.jetbrains.kotlinx:kover", version.ref = "kover" }
+classpaths-kover = { module = "org.jetbrains.kotlinx:kover-gradle-plugin", version.ref = "kover" }
 
 [plugins]
 

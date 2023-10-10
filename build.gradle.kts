@@ -25,7 +25,9 @@ buildscript {
 
 allprojects {
 
-    apply(plugin = rootProject.libs.plugins.kover.get().pluginId)
+    apply(plugin = rootProject.libs.plugins.kover.get().pluginId).also {
+        rootProject.dependencies.add("kover", project(path))
+    }
 
     Library.apply {
 
@@ -101,10 +103,6 @@ allprojects {
             allWarningsAsErrors = true
         }
     }
-}
-
-koverMerged {
-    enable()
 }
 
 val isReleaseBuild: Boolean
