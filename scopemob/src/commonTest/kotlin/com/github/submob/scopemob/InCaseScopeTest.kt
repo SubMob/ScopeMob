@@ -8,7 +8,7 @@ import com.github.submob.scopemob.extension.passTest
 import com.github.submob.scopemob.main.MainScopeTest
 import kotlin.test.Test
 
-class InCaseScopeTest : MainScopeTest() {
+internal class InCaseScopeTest : MainScopeTest() {
 
     @Test
     fun inCase() {

@@ -8,7 +8,7 @@ import com.github.submob.scopemob.extension.passTest
 import com.github.submob.scopemob.main.MainScopeTest
 import kotlin.test.Test
 
-class EitherScopeTest : MainScopeTest() {
+internal class EitherScopeTest : MainScopeTest() {
 
     @Test
     fun eitherMixMix() {

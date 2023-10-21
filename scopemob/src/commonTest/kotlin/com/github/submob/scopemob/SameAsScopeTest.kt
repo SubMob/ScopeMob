@@ -8,7 +8,7 @@ import com.github.submob.scopemob.extension.passTest
 import com.github.submob.scopemob.main.MainScopeTest
 import kotlin.test.Test
 
-class SameAsScopeTest : MainScopeTest() {
+internal class SameAsScopeTest : MainScopeTest() {
 
     @Test
     fun same() {

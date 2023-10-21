@@ -16,7 +16,7 @@ import com.github.submob.scopemob.whether
 import com.github.submob.scopemob.whetherNot
 import kotlin.test.Test
 
-open class MainScopeTest {
+internal open class MainScopeTest {
     protected var subjectFunction: FunctionTestSubject? = FunctionTestSubject()
 
     protected var someString: String? = "Some String"

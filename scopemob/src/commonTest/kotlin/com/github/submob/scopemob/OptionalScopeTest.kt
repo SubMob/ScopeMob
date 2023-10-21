@@ -11,7 +11,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 
-class OptionalScopeTest : MainScopeTest() {
+internal class OptionalScopeTest : MainScopeTest() {
 
     private var nullString: String? = null
     private var notNullString: String? = ""

@@ -12,7 +12,7 @@ import com.github.submob.scopemob.model.C
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class TransformScope : MainScopeTest() {
+internal class TransformScope : MainScopeTest() {
 
     @Test
     fun mapTo() {
