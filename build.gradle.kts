@@ -6,8 +6,11 @@ import java.io.IOException
 import java.util.Properties
 
 plugins {
+    libs.plugins.apply {
+        alias(libs.plugins.kotlinMultiplatform).apply(false)
+        alias(libs.plugins.kover)
+    }
     `maven-publish`
-    alias(libs.plugins.kover)
 }
 
 buildscript {

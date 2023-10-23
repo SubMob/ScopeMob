@@ -3,7 +3,7 @@
  */
 
 plugins {
-    id(libs.plugins.multiplatform.get().pluginId)
+    alias(libs.plugins.kotlinMultiplatform)
     `maven-publish`
     signing
 }

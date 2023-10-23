@@ -14,5 +14,5 @@ classpaths-kover = { module = "org.jetbrains.kotlinx:kover-gradle-plugin", versi
 
 [plugins]
 
-multiplatform = { id = "org.jetbrains.kotlin.multiplatform" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
