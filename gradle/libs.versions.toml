@@ -10,7 +10,6 @@ common-testAnnotations = { module = "org.jetbrains.kotlin:kotlin-test-annotation
 
 # CLASSPATHS
 classpaths-kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-classpaths-kover = { module = "org.jetbrains.kotlinx:kover-gradle-plugin", version.ref = "kover" }
 
 [plugins]
 

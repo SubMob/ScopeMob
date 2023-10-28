@@ -21,7 +21,6 @@ buildscript {
     dependencies {
         libs.classpaths.apply {
             classpath(kotlinGradlePlugin)
-            classpath(kover)
         }
     }
 }
