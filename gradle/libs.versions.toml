@@ -8,9 +8,6 @@ kover = "0.7.4"
 common-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 common-testAnnotations = { module = "org.jetbrains.kotlin:kotlin-test-annotations-common", version.ref = "kotlin" }
 
-# CLASSPATHS
-classpaths-kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-
 [plugins]
 
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

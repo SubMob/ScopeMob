@@ -13,18 +13,6 @@ plugins {
     `maven-publish`
 }
 
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        libs.classpaths.apply {
-            classpath(kotlinGradlePlugin)
-        }
-    }
-}
-
 allprojects {
 
     apply(plugin = rootProject.libs.plugins.kover.get().pluginId).also {
