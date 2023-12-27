@@ -1,6 +1,6 @@
 [versions]
 
-kotlin = "1.9.21"
+kotlin = "1.9.22"
 kover = "0.7.5"
 
 [libraries]
