@@ -17,4 +17,3 @@ jobs:
     uses: Oztechan/Global/.github/workflows/reusable-project-submodules.yml@7113d9183b7e560c7272383d48c4f89e848b617d
     with:
       project_id: 1
-    secrets: inherit
