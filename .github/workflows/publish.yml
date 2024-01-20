@@ -1,0 +1,14 @@
+name: Publish Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+
+  PublishRelease:
+    uses: Oztechan/Global/.github/workflows/reusable-publish.yml@v1.0.1
+    with:
+      slack_channel: "submob"
+    secrets: inherit
