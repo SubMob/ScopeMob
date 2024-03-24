@@ -1,7 +1,7 @@
 [versions]
 
 kotlin = "1.9.23"
-kover = "0.7.5"
+kover = "0.7.6"
 
 [libraries]
 # COMMON
