@@ -12,12 +12,12 @@ Example:
 
 ## Commit Message
 
-Every commit message should match the following format `[SubMob/ScopeMob#ISSUE_ID] Commit message`
+Every commit message should match the following format `[Oztechan/Global#ISSUE_ID] Commit message`
 
 Example:
 
 ```
-[SubMob/ScopeMob#ISSUE_ID] My cool feature
+[Oztechan/Global#ISSUE_ID] My cool feature
 ```
 
 ## Pull Request
@@ -27,23 +27,23 @@ Example:
 Pull Request title should follow below format:
 
 ```
-[SubMob/ScopeMob#ISSUE_ID] ISSUE_TITLE
+[Oztechan/Global#ISSUE_ID] ISSUE_TITLE
 ```
 
 Example:
 
 ```
-[SubMob/ScopeMob#ISSUE_ID] Whatever the name of ticket is
+[Oztechan/Global#ISSUE_ID] Whatever the name of ticket is
 ```
 
 ### Description
 
-Description has to have `Resolves SubMob/ScopeMob#ISSUE_ID` with relevant issue. It will help project automations.
+Description has to have `Resolves Oztechan/Global#ISSUE_ID` with relevant issue. It will help project automations.
 
 Example:
 
 ```
-Resolves SubMob/ScopeMob#123
+Resolves Oztechan/Global#123
 
 Some description.
 ```
