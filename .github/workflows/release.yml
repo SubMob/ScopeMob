@@ -23,7 +23,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Publish
-        uses: gradle/actions/setup-gradle@v3.3.1
+        uses: gradle/actions/setup-gradle@v3.3.2
         with:
           arguments: publish
           build-scan-publish: true
