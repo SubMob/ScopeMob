@@ -25,11 +25,11 @@ internal open class MainScopeTest {
     fun isChainBreaks() {
         subjectFunction
             ?.whether { it.trueCondition }
-            ?.whetherNot { falseCondition }
+            ?.whetherNot { it.falseCondition }
             ?.inCase(true) { passTest() }
             ?.inCaseNot(true) { failTest() }
-            ?.inCase({ trueCondition }) { passTest() }
-            ?.inCaseNot({ trueCondition }) { failTest() }
+            ?.inCase({ it.trueCondition }) { passTest() }
+            ?.inCaseNot({ it.trueCondition }) { failTest() }
             ?.whetherNot { it.trueCondition } // exit chain
             ?.whether { true }
             ?.let { failTest() }
@@ -37,12 +37,12 @@ internal open class MainScopeTest {
 
         subjectFunction
             ?.whether { it.trueCondition }
-            ?.whetherNot { falseCondition }
+            ?.whetherNot { it.falseCondition }
             ?.inCase(true) { passTest() }
             ?.inCaseNot(true) { failTest() }
-            ?.inCase({ trueCondition }) { passTest() }
-            ?.inCaseNot({ trueCondition }) { failTest() }
-            ?.either({ it.falseCondition }, { falseCondition }) // exit chain
+            ?.inCase({ it.trueCondition }) { passTest() }
+            ?.inCaseNot({ it.trueCondition }) { failTest() }
+            ?.either({ it.falseCondition }, { it.falseCondition }) // exit chain
             ?.whether { true }
             ?.let { failTest() }
             ?: run { passTest() }
@@ -53,12 +53,12 @@ internal open class MainScopeTest {
         subjectFunction = null
         subjectFunction
             ?.whether { it.trueCondition }
-            ?.either({ it.falseCondition }, { trueCondition })
+            ?.either({ it.falseCondition }, { it.trueCondition })
             ?.inCase(true) { passTest() }
             ?.inCaseNot(true) { failTest() }
-            ?.inCase({ trueCondition }) { passTest() }
-            ?.inCaseNot({ trueCondition }) { failTest() }
-            ?.whetherNot { falseCondition }
+            ?.inCase({ it.trueCondition }) { passTest() }
+            ?.inCaseNot({ it.trueCondition }) { failTest() }
+            ?.whetherNot { it.falseCondition }
             ?.mapTo { it.trueCondition }
             ?.sameAs { true }
             ?.notSameAs { false }
@@ -73,12 +73,12 @@ internal open class MainScopeTest {
         subjectFunction = null
         subjectFunction
             ?.whether { it.trueCondition }
-            ?.either({ it.falseCondition }, { trueCondition })
+            ?.either({ it.falseCondition }, { it.trueCondition })
             ?.inCase(true) { passTest() }
             ?.inCaseNot(true) { failTest() }
-            ?.inCase({ trueCondition }) { passTest() }
-            ?.inCaseNot({ trueCondition }) { failTest() }
-            ?.whetherNot { falseCondition }
+            ?.inCase({ it.trueCondition }) { passTest() }
+            ?.inCaseNot({ it.trueCondition }) { failTest() }
+            ?.whetherNot { it.falseCondition }
             ?.mapTo { it.trueCondition }
             ?.sameAs { true }
             ?.notSameAs { false }

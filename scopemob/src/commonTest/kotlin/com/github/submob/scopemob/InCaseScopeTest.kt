@@ -18,7 +18,7 @@ internal class InCaseScopeTest : MainScopeTest() {
             }
 
         subjectFunction
-            ?.whether { trueCondition }
+            ?.whether { it.trueCondition }
             ?.inCase(true) { passTest() }
             ?.inCase(false) { failTest() }
             ?.inCase(true) { passTest() }
@@ -34,7 +34,7 @@ internal class InCaseScopeTest : MainScopeTest() {
             }
 
         subjectFunction
-            ?.whether { trueCondition }
+            ?.whether { it.trueCondition }
             ?.inCaseNot(false) { passTest() }
             ?.inCaseNot(true) { failTest() }
             ?.inCaseNot(false) { passTest() }
@@ -45,15 +45,15 @@ internal class InCaseScopeTest : MainScopeTest() {
     @Test
     fun inCaseScope() {
         subjectFunction
-            ?.inCase({ falseCondition }) {
+            ?.inCase({ it.falseCondition }) {
                 failTest()
             }
 
         subjectFunction
-            ?.whether { trueCondition }
-            ?.inCase({ trueCondition }) { passTest() }
-            ?.inCase({ falseCondition }) { failTest() }
-            ?.inCase({ trueCondition }) { passTest() }
+            ?.whether { it.trueCondition }
+            ?.inCase({ it.trueCondition }) { passTest() }
+            ?.inCase({ it.falseCondition }) { failTest() }
+            ?.inCase({ it.trueCondition }) { passTest() }
             ?.let { passTest() }
             ?: run { failTest() }
     }
@@ -61,15 +61,15 @@ internal class InCaseScopeTest : MainScopeTest() {
     @Test
     fun inCaseNotScope() {
         subjectFunction
-            ?.inCaseNot({ trueCondition }) {
+            ?.inCaseNot({ it.trueCondition }) {
                 failTest()
             }
 
         subjectFunction
-            ?.whether { trueCondition }
-            ?.inCaseNot({ falseCondition }) { passTest() }
-            ?.inCaseNot({ trueCondition }) { failTest() }
-            ?.inCaseNot({ falseCondition }) { passTest() }
+            ?.whether { it.trueCondition }
+            ?.inCaseNot({ it.falseCondition }) { passTest() }
+            ?.inCaseNot({ it.trueCondition }) { failTest() }
+            ?.inCaseNot({ it.falseCondition }) { passTest() }
             ?.let { passTest() }
             ?: run { failTest() }
     }

@@ -14,13 +14,13 @@ internal class EitherScopeTest : MainScopeTest() {
     fun eitherMixMix() {
         subjectFunction
             ?.either({ it.trueCondition }, { it.falseCondition })
-            ?.either({ trueCondition }, { falseCondition })
+            ?.either({ it.trueCondition }, { it.falseCondition })
             ?.let { passTest() }
             ?: run { failTest() }
 
         subjectFunction
             ?.either({ it.falseCondition }, { it.trueCondition })
-            ?.either({ falseCondition }, { trueCondition })
+            ?.either({ it.falseCondition }, { it.trueCondition })
             ?.let { passTest() }
             ?: run { failTest() }
     }
@@ -29,13 +29,13 @@ internal class EitherScopeTest : MainScopeTest() {
     fun eitherMixTrue() {
         subjectFunction
             ?.either({ it.trueCondition }, { it.falseCondition })
-            ?.either({ trueCondition }, { trueCondition })
+            ?.either({ it.trueCondition }, { it.trueCondition })
             ?.let { passTest() }
             ?: run { failTest() }
 
         subjectFunction
             ?.either({ it.falseCondition }, { it.trueCondition })
-            ?.either({ trueCondition }, { trueCondition })
+            ?.either({ it.trueCondition }, { it.trueCondition })
             ?.let { passTest() }
             ?: run { failTest() }
     }
@@ -44,13 +44,13 @@ internal class EitherScopeTest : MainScopeTest() {
     fun eitherMixFalse() {
         subjectFunction
             ?.either({ it.trueCondition }, { it.falseCondition })
-            ?.either({ falseCondition }, { falseCondition })
+            ?.either({ it.falseCondition }, { it.falseCondition })
             ?.let { failTest() }
             ?: run { passTest() }
 
         subjectFunction
             ?.either({ it.falseCondition }, { it.trueCondition })
-            ?.either({ falseCondition }, { falseCondition })
+            ?.either({ it.falseCondition }, { it.falseCondition })
             ?.let { failTest() }
             ?: run { passTest() }
     }
@@ -59,13 +59,13 @@ internal class EitherScopeTest : MainScopeTest() {
     fun eitherNotMix() {
         subjectFunction
             ?.eitherNot({ it.trueCondition }, { it.falseCondition })
-            ?.eitherNot({ trueCondition }, { falseCondition })
+            ?.eitherNot({ it.trueCondition }, { it.falseCondition })
             ?.let { failTest() }
             ?: run { passTest() }
 
         subjectFunction
             ?.eitherNot({ it.falseCondition }, { it.trueCondition })
-            ?.eitherNot({ falseCondition }, { trueCondition })
+            ?.eitherNot({ it.falseCondition }, { it.trueCondition })
             ?.let { failTest() }
             ?: run { passTest() }
     }
@@ -74,13 +74,13 @@ internal class EitherScopeTest : MainScopeTest() {
     fun eitherNotMixTrue() {
         subjectFunction
             ?.eitherNot({ it.trueCondition }, { it.falseCondition })
-            ?.eitherNot({ trueCondition }, { trueCondition })
+            ?.eitherNot({ it.trueCondition }, { it.trueCondition })
             ?.let { failTest() }
             ?: run { passTest() }
 
         subjectFunction
             ?.eitherNot({ it.falseCondition }, { it.trueCondition })
-            ?.eitherNot({ trueCondition }, { trueCondition })
+            ?.eitherNot({ it.trueCondition }, { it.trueCondition })
             ?.let { failTest() }
             ?: run { passTest() }
     }
@@ -89,13 +89,13 @@ internal class EitherScopeTest : MainScopeTest() {
     fun eitherNotMixFalse() {
         subjectFunction
             ?.eitherNot({ it.trueCondition }, { it.falseCondition })
-            ?.eitherNot({ falseCondition }, { falseCondition })
+            ?.eitherNot({ it.falseCondition }, { it.falseCondition })
             ?.let { failTest() }
             ?: run { passTest() }
 
         subjectFunction
             ?.eitherNot({ it.falseCondition }, { it.trueCondition })
-            ?.eitherNot({ falseCondition }, { falseCondition })
+            ?.eitherNot({ it.falseCondition }, { it.falseCondition })
             ?.let { failTest() }
             ?: run { passTest() }
     }
@@ -104,7 +104,7 @@ internal class EitherScopeTest : MainScopeTest() {
     fun eitherNotFalseFalse() {
         subjectFunction
             ?.eitherNot({ it.falseCondition }, { it.falseCondition })
-            ?.eitherNot({ falseCondition }, { falseCondition })
+            ?.eitherNot({ it.falseCondition }, { it.falseCondition })
             ?.let { passTest() }
             ?: run { failTest() }
     }

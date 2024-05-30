@@ -7,7 +7,7 @@ package com.github.submob.scopemob
 
 inline fun <reified T> T.inCase(
     condition: Boolean?,
-    method: T.(T) -> Unit
+    method: (T) -> Unit
 ): T {
     if (condition == true) {
         method(this)
@@ -17,7 +17,7 @@ inline fun <reified T> T.inCase(
 
 inline fun <reified T> T.inCaseNot(
     condition: Boolean?,
-    method: T.(T) -> Unit
+    method: (T) -> Unit
 ): T {
     if (condition == false) {
         method(this)
@@ -26,8 +26,8 @@ inline fun <reified T> T.inCaseNot(
 }
 
 inline fun <reified T> T.inCase(
-    vararg condition: T.(T) -> Boolean?,
-    method: T.(T) -> Unit
+    vararg condition: (T) -> Boolean?,
+    method: (T) -> Unit
 ): T {
     if (condition.all { it(this) == true }) {
         method(this)
@@ -36,8 +36,8 @@ inline fun <reified T> T.inCase(
 }
 
 inline fun <reified T> T.inCaseNot(
-    vararg condition: T.(T) -> Boolean?,
-    method: T.(T) -> Unit
+    vararg condition: (T) -> Boolean?,
+    method: (T) -> Unit
 ): T {
     if (condition.all { it(this) == false }) {
         method(this)

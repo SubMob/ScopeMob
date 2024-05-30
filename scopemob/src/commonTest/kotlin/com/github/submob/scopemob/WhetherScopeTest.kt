@@ -14,13 +14,13 @@ internal class WhetherScopeTest : MainScopeTest() {
     fun whetherTrue() {
         subjectFunction
             ?.whether { it.trueCondition }
-            ?.whether { trueCondition }
+            ?.whether { it.trueCondition }
             ?.let { passTest() }
             ?: run { failTest() }
 
         // vararg
         subjectFunction
-            ?.whether({ it.trueCondition }, { trueCondition })
+            ?.whether({ it.trueCondition }, { it.trueCondition })
             ?.let { passTest() }
             ?: run { failTest() }
     }
@@ -29,13 +29,13 @@ internal class WhetherScopeTest : MainScopeTest() {
     fun whetherFalse() {
         subjectFunction
             ?.whether { it.falseCondition }
-            ?.whether { falseCondition }
+            ?.whether { it.falseCondition }
             ?.let { failTest() }
             ?: run { passTest() }
 
         // vararg
         subjectFunction
-            ?.whether({ it.falseCondition }, { falseCondition })
+            ?.whether({ it.falseCondition }, { it.falseCondition })
             ?.let { failTest() }
             ?: run { passTest() }
     }
@@ -44,13 +44,13 @@ internal class WhetherScopeTest : MainScopeTest() {
     fun whetherMix() {
         subjectFunction
             ?.whether { it.trueCondition }
-            ?.whether { falseCondition }
+            ?.whether { it.falseCondition }
             ?.let { failTest() }
             ?: run { passTest() }
 
         // vararg
         subjectFunction
-            ?.whether({ it.trueCondition }, { falseCondition })
+            ?.whether({ it.trueCondition }, { it.falseCondition })
             ?.let { failTest() }
             ?: run { passTest() }
     }
@@ -59,13 +59,13 @@ internal class WhetherScopeTest : MainScopeTest() {
     fun whetherNotFalse() {
         subjectFunction
             ?.whetherNot { it.falseCondition }
-            ?.whetherNot { falseCondition }
+            ?.whetherNot { it.falseCondition }
             ?.let { passTest() }
             ?: run { failTest() }
 
         // vararg
         subjectFunction
-            ?.whetherNot({ it.falseCondition }, { falseCondition })
+            ?.whetherNot({ it.falseCondition }, { it.falseCondition })
             ?.let { passTest() }
             ?: run { failTest() }
     }
@@ -74,13 +74,13 @@ internal class WhetherScopeTest : MainScopeTest() {
     fun whetherNotTrue() {
         subjectFunction
             ?.whetherNot { it.trueCondition }
-            ?.whetherNot { trueCondition }
+            ?.whetherNot { it.trueCondition }
             ?.let { failTest() }
             ?: run { passTest() }
 
         // vararg
         subjectFunction
-            ?.whetherNot({ it.trueCondition }, { trueCondition })
+            ?.whetherNot({ it.trueCondition }, { it.trueCondition })
             ?.let { failTest() }
             ?: run { passTest() }
     }
@@ -89,13 +89,13 @@ internal class WhetherScopeTest : MainScopeTest() {
     fun whetherNotMix() {
         subjectFunction
             ?.whetherNot { it.falseCondition }
-            ?.whetherNot { trueCondition }
+            ?.whetherNot { it.trueCondition }
             ?.let { failTest() }
             ?: run { passTest() }
 
         // vararg
         subjectFunction
-            ?.whetherNot({ it.falseCondition }, { trueCondition })
+            ?.whetherNot({ it.falseCondition }, { it.trueCondition })
             ?.let { passTest() }
             ?: run { failTest() }
     }

@@ -28,13 +28,13 @@ internal class TransformScope : MainScopeTest() {
             ?.let { failTest() }
             ?: run { passTest() }
         subjectFunction
-            ?.mapTo { trueCondition }
+            ?.mapTo { it.trueCondition }
             ?.whether { it }
             ?.let { passTest() }
             ?: run { failTest() }
 
         subjectFunction
-            ?.mapTo { falseCondition }
+            ?.mapTo { it.falseCondition }
             ?.whether { it }
             ?.let { failTest() }
             ?: run { passTest() }

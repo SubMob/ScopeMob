@@ -4,7 +4,7 @@
 package com.github.submob.scopemob
 
 inline fun <reified T, reified R> T.mapTo(
-    transform: T.(map: T) -> R
+    transform: (map: T) -> R
 ): R = transform(this)
 
 inline fun <reified T> Any.castTo(): T? = this as? T
