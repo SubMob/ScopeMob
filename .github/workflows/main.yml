@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Setup Gradle Repo
-        uses: Oztechan/Global/actions/setup-gradle-repo@v1.0.6
+        uses: Oztechan/Global/actions/setup-gradle-repo@v1.0.7
 
       - name: Gradle Build
         run: ./gradlew build koverXmlReport --parallel
