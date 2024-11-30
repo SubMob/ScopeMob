@@ -14,7 +14,6 @@ object ProjectSettings {
         project: Project
     ) = "$MAYOR_VERSION.$MINOR_VERSION.${gitCommitCount(project).toInt() - VERSION_DIF}"
 
-    @Suppress("UnstableApiUsage")
     private fun gitCommitCount(project: Project): String = project.providers.exec {
         commandLine("git rev-list --first-parent --count HEAD".split(" "))
     }.standardOutput.asText.get().trim()
