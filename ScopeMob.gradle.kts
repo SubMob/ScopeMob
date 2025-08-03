@@ -14,6 +14,7 @@ plugins {
 }
 
 allprojects {
+    project.dependencyLocking.lockAllConfigurations()
 
     apply(plugin = rootProject.libs.plugins.kover.get().pluginId).also {
         rootProject.dependencies.add("kover", project(path))
@@ -92,6 +93,12 @@ allprojects {
         compilerOptions {
             allWarningsAsErrors = true
         }
+    }
+}
+
+tasks.findByName("dependencies")?.let {
+    allprojects.forEach { prj ->
+        if (prj != rootProject) it.dependsOn("${prj.path}:dependencies")
     }
 }
 

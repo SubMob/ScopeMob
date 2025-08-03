@@ -19,6 +19,14 @@ jobs:
       - name: Gradle Build
         run: ./gradlew build koverXmlReport --parallel
 
+      # Run ./gradlew dependencies --write-locks before you commit if you want to update the lock files
+      # When you update dependencies manually, you need to run this command locally to update the lock files
+      # If there are any differences, exit code will be 1 and CI fails, that means dependencies were updated
+      - name: Check for changes in lock files
+        run: |
+          ./gradlew dependencies --write-locks
+          git diff --exit-code '**/*.lockfile'
+
       - name: Upload to Codecov
         uses: codecov/codecov-action@v5.4.3
         with:
