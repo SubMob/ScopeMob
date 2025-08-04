@@ -96,12 +96,6 @@ allprojects {
     }
 }
 
-tasks.findByName("dependencies")?.let {
-    allprojects.forEach { prj ->
-        if (prj != rootProject) it.dependsOn("${prj.path}:dependencies")
-    }
-}
-
 val isReleaseBuild: Boolean
     get() = System.getenv("GPG_KEY") != null
 
