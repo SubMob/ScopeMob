@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Setup Gradle Repo
-        uses: Oztechan/Global/actions/setup-gradle-repo@ba5d1c24cc0487ef7bf0846145c85066b728cd4f
+        uses: Oztechan/Global/actions/setup-gradle-repo@4bda8a424485eab2b69d39883a78bcbe599874bb
 
       - name: Publish
         run: ./gradlew publish
