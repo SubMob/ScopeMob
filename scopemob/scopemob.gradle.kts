@@ -18,7 +18,6 @@ kotlin {
     sourceSets.commonTest.dependencies {
         libs.common.apply {
             implementation(test)
-            implementation(testAnnotations)
         }
     }
 }
