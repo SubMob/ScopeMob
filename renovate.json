@@ -19,6 +19,19 @@
     "enabled": true,
     "commitMessageAction": "[SubMob/ScopeMob#32] Lock file maintenance"
   },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^ios/CCC\\.xcodeproj/project\\.pbxproj$/"
+      ],
+      "matchStrings": [
+        "repositoryURL = \"https://github.com/(?<owner>[^/]+)/(?<repo>[^\"/]+?)(?:\\.git)?\";\\s*requirement = \\{\\s*kind = exactVersion;\\s*version = (?<currentValue>[^;]+);"
+      ],
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "/"
+    }
+  ],
   "packageRules": [
     {
       "groupName": "kotlin",
