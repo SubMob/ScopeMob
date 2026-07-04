@@ -30,7 +30,8 @@ allprojects {
             mavenCentral()
         }
 
-        val emptyJavadocJar by tasks.registering(Jar::class) {
+        val emptyJavadocJar = tasks.register<Jar>("emptyJavadocJar") {
+            description = "Generates an empty Javadoc JAR for publishing."
             archiveClassifier.set("javadoc")
         }
 
