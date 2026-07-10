@@ -4,11 +4,11 @@
 import org.gradle.api.Project
 
 object ProjectSettings {
-    private const val MAYOR_VERSION = 2
-    private const val MINOR_VERSION = 1
+    private const val MAYOR_VERSION = 3
+    private const val MINOR_VERSION = 0
 
-    // git rev-list --first-parent --count master +1
-    private const val VERSION_DIF = 95
+    // git rev-list --first-parent --count master (recalibrated at the 3.0 major bump)
+    private const val VERSION_DIF = 102
 
     fun getVersionName(project: Project): String = if (isMaster(project)) {
         // Permanent, pinnable release: x.y.<commit-count>.
