@@ -2,6 +2,7 @@
 
 kotlin = "2.4.0"
 kover = "0.9.8"
+mavenPublish = "0.37.0"
 
 [libraries]
 # COMMON
@@ -11,3 +12,4 @@ common-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotl
 
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
+mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
