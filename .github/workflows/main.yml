@@ -1,14 +1,14 @@
 name: ScopeMob CI
 
 on:
+  pull_request:
   push:
     branches:
       - develop
-      - 'submodule/CCC'
-  pull_request:
+      - master
 
 jobs:
-  build:
+  ci:
 
     runs-on: macos-26
 
@@ -20,16 +20,43 @@ jobs:
         run: ./gradlew build koverXmlReport --parallel
 
       - name: Upload to Codecov
+        continue-on-error: true
         uses: codecov/codecov-action@v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: build/reports/kover/report.xml
 
       - name: Upload to Codacy
+        continue-on-error: true
         uses: codacy/codacy-coverage-reporter-action@v1.3.0
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           coverage-reports: build/reports/kover/report.xml
+
+      # Publish only on a merge to develop/master, and only after the build above passes.
+      # develop -> X.Y-SNAPSHOT (unsigned), master -> X.Y.Z release (signed).
+      - name: Publish
+        if: github.event_name == 'push'
+        # Normalize the armored GPG key: literal "\n" -> real newlines (vanniktech's
+        # signingInMemoryKey needs real newlines); a correct key passes through unchanged.
+        run: |
+          export ORG_GRADLE_PROJECT_signingInMemoryKey="$(printf '%b' "$GPG_KEY_RAW")"
+          ./gradlew publishToMavenCentral --no-configuration-cache
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_PASSWORD }}
+          GPG_KEY_RAW: ${{ secrets.GPG_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.GPG_PASSWORD }}
+
+      - name: Notify slack success
+        if: success() && github.event_name == 'push'
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v2
+        with:
+          channel: submob
+          status: SUCCESS
+          color: good
 
       - name: Notify slack fail
         if: failure()

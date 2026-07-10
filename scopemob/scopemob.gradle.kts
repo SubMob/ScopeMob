@@ -23,6 +23,9 @@ kotlin {
 
 mavenPublishing {
     // Coordinates (GROUP + POM_ARTIFACT_ID), POM, host and auto-release come from gradle.properties.
-    // Central Portal requires signed artifacts; keys are provided in CI via ORG_GRADLE_PROJECT_* env.
-    signAllPublications()
+    // Sign releases only — Central Portal snapshots aren't signed, and the signing key is provided
+    // to release CI via ORG_GRADLE_PROJECT_* env.
+    if (!version.toString().endsWith("SNAPSHOT")) {
+        signAllPublications()
+    }
 }
