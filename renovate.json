@@ -19,17 +19,15 @@
     "enabled": true,
     "commitMessageAction": "[SubMob/ScopeMob#32] Lock file maintenance"
   },
-  "customManagers": [
+  "regexManagers": [
     {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/^ios/CCC\\.xcodeproj/project\\.pbxproj$/"
+      "fileMatch": [
+        "^$"
       ],
       "matchStrings": [
-        "repositoryURL = \"https://github.com/(?<owner>[^/]+)/(?<repo>[^\"/]+?)(?:\\.git)?\";\\s*requirement = \\{\\s*kind = exactVersion;\\s*version = (?<currentValue>[^;]+);"
+        "repositoryURL = \"https://github.com/(?<depName>[^/]+/[^\"/]+?)(?:\\.git)?\";\\s*requirement = \\{\\s*kind = exactVersion;\\s*version = (?<currentValue>[^;]+);"
       ],
-      "datasourceTemplate": "github-tags",
-      "depNameTemplate": "/"
+      "datasourceTemplate": "github-tags"
     }
   ],
   "packageRules": [
