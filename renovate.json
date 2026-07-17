@@ -19,10 +19,11 @@
     "enabled": true,
     "commitMessageAction": "[SubMob/ScopeMob#32] Lock file maintenance"
   },
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": [
-        "^$"
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^$/"
       ],
       "matchStrings": [
         "repositoryURL = \"https://github.com/(?<depName>[^/]+/[^\"/]+?)(?:\\.git)?\";\\s*requirement = \\{\\s*kind = exactVersion;\\s*version = (?<currentValue>[^;]+);"
