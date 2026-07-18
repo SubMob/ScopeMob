@@ -17,5 +17,6 @@ jobs:
     uses: Oztechan/Global/.github/workflows/reusable-project.yml@d2d760603ad21c392c22ab10508941b6f65a3cf1
     with:
       project_id: 1
-      organization: SubMob    secrets:
+      organization: SubMob
+    secrets:
       PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
