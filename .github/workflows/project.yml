@@ -14,8 +14,9 @@ on:
 
 jobs:
   ProjectAutomations:
-    uses: Oztechan/Global/.github/workflows/reusable-project-submodules.yml@8610938e630b3ed86127765237fe3647b9fabd4f
+    uses: Oztechan/Global/.github/workflows/reusable-project.yml@6c7b329cd65b22c4cbdf59dda5f9436e54f1c26f
     with:
       project_id: 1
+      organization: SubMob
     secrets:
       PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
