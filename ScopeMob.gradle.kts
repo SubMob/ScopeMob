@@ -33,3 +33,10 @@ allprojects {
         }
     }
 }
+
+// Resolved version, read by CI to tag the release. The VERSION_NAME= prefix keeps it parseable
+// even when Gradle writes build-scan output to the same stream.
+tasks.register("printVersion") {
+    val projectVersion = version.toString()
+    doLast { println("VERSION_NAME=$projectVersion") }
+}
