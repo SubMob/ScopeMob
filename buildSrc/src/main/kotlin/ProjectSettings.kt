@@ -7,18 +7,18 @@ object ProjectSettings {
     private const val MAYOR_VERSION = 3
     private const val MINOR_VERSION = 0
 
-    // git rev-list --first-parent --count master (recalibrated at the 3.0 major bump)
-    private const val VERSION_DIF = 102
+    // git rev-list --first-parent --count develop (recalibrated when releases moved off master)
+    private const val VERSION_DIF = 422
 
-    fun getVersionName(project: Project): String = if (isMaster(project)) {
-        // Permanent, pinnable release: x.y.<commit-count>.
+    fun getVersionName(project: Project): String = if (isReleaseBranch(project)) {
+        // Permanent, pinnable release: x.y.<commit-count>. Every merge to develop publishes one.
         "$MAYOR_VERSION.$MINOR_VERSION.${gitCommitCount(project).toInt() - VERSION_DIF}"
     } else {
-        // Stable moving snapshot ("latest develop") — consumers pin x.y-SNAPSHOT and always get newest.
+        // Feature branches and local builds — never published, so the moving snapshot is fine.
         "$MAYOR_VERSION.$MINOR_VERSION-SNAPSHOT"
     }
 
-    private fun isMaster(project: Project): Boolean = currentBranch(project) == "master"
+    private fun isReleaseBranch(project: Project): Boolean = currentBranch(project) == "develop"
 
     private fun currentBranch(project: Project): String {
         // In GitHub Actions the checked-out branch is exposed as GITHUB_REF_NAME; fall back to git locally.
