@@ -65,16 +65,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh release create "v${{ steps.version.outputs.version }}" --target "$GITHUB_SHA" --generate-notes
 
-      - name: Notify slack success
-        if: success() && github.event_name == 'push'
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v2
-        with:
-          channel: submob
-          status: SUCCESS
-          color: good
-
       - name: Notify slack fail
         if: failure()
         env:
