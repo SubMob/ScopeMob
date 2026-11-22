@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - develop
+  schedule:
+    - cron: '0 3 1 * *' # 03:00 UTC on the first of the month
 
 jobs:
   ci:
@@ -35,10 +37,28 @@ jobs:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           coverage-reports: build/reports/kover/report.xml
 
-      # develop is the release branch: every merge publishes an immutable, signed X.Y.Z to Maven
-      # Central, once the build above passes. Every other branch builds X.Y-SNAPSHOT and never publishes.
+      # The version is the commit count, so a month without merges would republish a version that
+      # already exists and Maven Central refuses that. Skip instead of failing the scheduled run.
+      - name: Check the version is unpublished
+        id: unpublished
+        if: github.event_name == 'schedule'
+        run: |
+          version=$(./gradlew -q printVersion | grep '^VERSION_NAME=' | cut -d= -f2)
+          url="https://repo1.maven.org/maven2/com/github/submob/$ARTIFACT/$version/$ARTIFACT-$version.pom"
+          if [ "$(curl -s -o /dev/null -w '%{http_code}' "$url")" = "200" ]; then
+            echo "$version is already on Maven Central, nothing to publish."
+            echo "publish=false" >> $GITHUB_OUTPUT
+          else
+            echo "publish=true" >> $GITHUB_OUTPUT
+          fi
+        env:
+          ARTIFACT: scopemob
+
+      # Monthly, so a run of dependency bumps costs one Maven Central release instead of a dozen.
+      # Consumers that need every commit read the tags below. Every other branch builds
+      # X.Y-SNAPSHOT and never publishes.
       - name: Publish
-        if: github.event_name == 'push'
+        if: github.event_name == 'schedule' && steps.unpublished.outputs.publish == 'true'
         # Normalize the armored GPG key: literal "\n" -> real newlines (vanniktech's
         # signingInMemoryKey needs real newlines); a correct key passes through unchanged.
         run: |
@@ -50,15 +70,16 @@ jobs:
           GPG_KEY_RAW: ${{ secrets.GPG_KEY }}
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.GPG_PASSWORD }}
 
-      # Read back from Gradle so the tag always matches the version just published to Maven Central.
+      # Read back from Gradle so the tag always matches the version the build produced.
       - name: Resolve version
         id: version
         if: github.event_name == 'push'
         run: echo "version=$(./gradlew -q printVersion | grep '^VERSION_NAME=' | cut -d= -f2)" >> $GITHUB_OUTPUT
 
-      # Tags the released commit and cuts the matching GitHub release. Done inline rather than from a
-      # tag-triggered workflow, because tags pushed with GITHUB_TOKEN never trigger other workflows.
-      # --generate-notes fills the body from the merged PRs, which is what Renovate shows consumers.
+      # Tags every merge and cuts the matching GitHub release. The consumers pin submodules to these
+      # tags, so they have to exist per commit even though Maven Central only gets a monthly release.
+      # Done inline rather than from a tag-triggered workflow, because tags pushed with GITHUB_TOKEN
+      # never trigger other workflows. --generate-notes fills the body from the merged PRs.
       - name: PublishRelease
         if: github.event_name == 'push'
         env:
