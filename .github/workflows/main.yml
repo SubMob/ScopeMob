@@ -18,21 +18,21 @@ jobs:
 
     steps:
       - name: Setup Gradle Repo
-        uses: Oztechan/Global/actions/setup-gradle-repo@8610938e630b3ed86127765237fe3647b9fabd4f
+        uses: Oztechan/Global/actions/setup-gradle-repo@8610938e630b3ed86127765237fe3647b9fabd4f # develop
 
       - name: Gradle Build
         run: ./gradlew build koverXmlReport --parallel
 
       - name: Upload to Codecov
         continue-on-error: true
-        uses: codecov/codecov-action@v7.1.1
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: build/reports/kover/report.xml
 
       - name: Upload to Codacy
         continue-on-error: true
-        uses: codacy/codacy-coverage-reporter-action@v1.3.0
+        uses: codacy/codacy-coverage-reporter-action@89d6c85cfafaec52c72b6c5e8b2878d33104c699 # v1.3.0
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           coverage-reports: build/reports/kover/report.xml
@@ -90,7 +90,7 @@ jobs:
         if: failure()
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v2
+        uses: voxmedia/github-action-slack-notify-build@373da97827332b19e753c84d1e5b7937dbe0fbfa # v2
         with:
           channel: submob
           status: FAILED
